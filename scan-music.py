@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import os
+import boto
+import pylast
 from mutagen.mp3 import MP3
 
 class Converter(object):

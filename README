@@ -1,1 +1,5 @@
 Visualization of music taste.
+
+Dependencies:
+ * mutagen
+ * pylast
