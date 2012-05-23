@@ -5,12 +5,10 @@ import boto
 import pylast
 from mutagen.mp3 import MP3
 
-class Scanner(object):
+from musichastherighttochildren.globals import Globals
 
-	MUSIC = '/Users/michiel/Music/iTunes/iTunes Music/Music'
-	EXTENSION_MP3 = 'mp3'
-	EXTENSION_M4A = 'm4a'
-	EXTENSIONS = [EXTENSION_MP3, EXTENSION_M4A]
+class Scanner(Globals):
+
 	years = []
 
 	def main(self):
