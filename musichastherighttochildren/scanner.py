@@ -4,10 +4,14 @@ import os
 import boto
 import pylast
 from mutagen.mp3 import MP3
+import musicbrainz2
 
 from musichastherighttochildren.globals import Globals
 
 class Scanner(Globals):
+	u"""
+	Scans local music collection and stores found metadata in the database.
+	"""
 
 	years = []
 
@@ -45,6 +49,17 @@ class Scanner(Globals):
 							#FOUND = True
 							#break
 
+							
+	# Metadata functionality.
+							
+	def getReleaseId(self, folder):
+		pass
+	
+	# Datastore interface.
+	
+	def storeId(self, id):
+		pass
+	
 if __name__ == '__main__':
 	scanner = Scanner()
 	scanner.main()
