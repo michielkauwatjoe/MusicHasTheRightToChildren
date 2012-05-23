@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 
 import os
 import boto
 import pylast
 from mutagen.mp3 import MP3
 
-class Converter(object):
+class Scanner(object):
 
 	MUSIC = '/Users/michiel/Music/iTunes/iTunes Music/Music'
 	EXTENSION_MP3 = 'mp3'
@@ -48,5 +48,5 @@ class Converter(object):
 							#break
 
 if __name__ == '__main__':
-	converter = Converter()
-	converter.main()
+	scanner = Scanner()
+	scanner.main()
