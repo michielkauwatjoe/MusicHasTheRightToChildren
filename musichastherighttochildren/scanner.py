@@ -16,11 +16,19 @@ class Scanner(Globals):
 	years = []
 
 	def main(self):
+		self.scanCollection()
+		if self.HAS_LASTFM:
+			self.scanLastFM()
+
+	# Setup.
+			
+	def scanCollection(self):
 		u"""
 		Walks through iTunes folders, prints metadata.
+		TODO: run in a separate process.
 		"""
 		FOUND = False
-		for root, dirs, files in os.walk(self.MUSIC):
+		for root, dirs, files in os.walk(self.COLLECTION):
 			if FOUND:
 				break
 
@@ -48,6 +56,9 @@ class Scanner(Globals):
 							#	print key#, value
 							#FOUND = True
 							#break
+
+	def scanLastFM(self):
+		pass
 
 							
 	# Metadata functionality.

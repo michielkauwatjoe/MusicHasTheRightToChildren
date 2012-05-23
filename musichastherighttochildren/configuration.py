@@ -1,4 +1,5 @@
 # -*- coding: UTF-8 -*-
 
 class Configuration():
-    MUSIC = '/Users/michiel/Music/iTunes/iTunes Music/Music'
+    COLLECTION       = '/Users/michiel/Music/iTunes/iTunes Music/Music'
+    HAS_LASTFM       = True
