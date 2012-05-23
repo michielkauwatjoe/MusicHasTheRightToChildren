@@ -1,0 +1,4 @@
+mutagen
+pylast
+python-musicbrainz2	
+boto
