@@ -4,7 +4,8 @@ import os
 import boto
 import pylast
 from mutagen.mp3 import MP3
-import musicbrainz2
+import musicbrainz2.webservice as ws
+import pyechonest
 
 from musichastherighttochildren.globals import Globals
 
@@ -27,35 +28,44 @@ class Scanner(Globals):
 		Walks through iTunes folders, prints metadata.
 		TODO: run in a separate process.
 		"""
-		FOUND = False
 		for root, dirs, files in os.walk(self.COLLECTION):
-			if FOUND:
+			id, format = self.scanFolder(root, files)
+			album = root.split('/')[-1]
+			album = '"' + album + '"'
+			if format and id:
+				print album, id
+			elif format and not id:
+				print album, "doesn't contain any files that have MusicBrainz metadata."
+				
+	def scanFolder(self, root, files):
+		id = None
+		format = None
+		
+		for f in files:
+			id, format = self.scanFile(root, f)
+			if id and format:
 				break
 
-			for f in files:
-				if FOUND:
-					break
-
-				if '.' in f:
-					parts = f.split('.')
-					ext = parts[-1]
-					if ext in self.EXTENSIONS:
-						if ext == self.EXTENSION_MP3:
+		return id, format
 		
-							path = root + '/' + f
-							audio = MP3(path)
-							try:
-								year = audio['TDRC']
-								track = audio['TIT2']
-							except:
-								print path
-							print track
-					
-							#print audio.pprint()
-							#for key, value in audio.items():
-							#	print key#, value
-							#FOUND = True
-							#break
+	def scanFile(self, root, f):
+		id = None
+		format = None
+		
+		if '.' in f:
+			parts = f.split('.')
+			ext = parts[-1]
+			
+			if ext in self.EXTENSIONS:
+				if ext == self.EXTENSION_MP3:
+					format = self.EXTENSION_MP3
+					path = root + '/' + f
+					audio = MP3(path)
+					#print audio.pprint()
+					for key, value in audio.items():
+						if key.startswith(self.KEY_MUSICBRAINZ_ALBUMID):
+							id = value
+		return id, format
 
 	def scanLastFM(self):
 		pass
