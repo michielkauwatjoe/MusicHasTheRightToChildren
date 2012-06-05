@@ -1,13 +1,13 @@
 # -*- coding: UTF-8 -*-
 
 import os
-import boto
 import pylast
 from mutagen.mp3 import MP3
 import musicbrainz2.webservice as ws
 import pyechonest
 
 from musichastherighttochildren.globals import Globals
+from musichastherighttochildren.simpledb import SimpleDB
 
 class Scanner(Globals):
 	u"""
@@ -16,7 +16,9 @@ class Scanner(Globals):
 
 	years = []
 
+
 	def main(self):
+		self.SDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY)
 		self.scanCollection()
 		if self.HAS_LASTFM:
 			self.scanLastFM()
