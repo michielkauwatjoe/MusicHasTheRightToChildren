@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 class Configuration():
-	COLLECTION		  = '/Users/michiel/Music/iTunes/iTunes Music/Music'
+	COLLECTION		  = '/Users/<username>/Music/iTunes/iTunes Music/Music'
 	HAS_LASTFM		  = True
-	AWS_ACCESS_KEY	  = 'AKIAIG6QTY3GEPNCTAXQ'
-	AWS_SECRET_KEY	  = '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'
+	LASTFM_USERNAME   = 'lastfm-username'
+	AWS_ACCESS_KEY	  = ''
+	AWS_SECRET_KEY	  = ''
