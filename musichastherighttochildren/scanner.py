@@ -18,7 +18,7 @@ class Scanner(Globals):
 
 
 	def main(self):
-		self.SDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY)
+		self.SDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
 		self.scanCollection()
 		if self.HAS_LASTFM:
 			self.scanLastFM()

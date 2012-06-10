@@ -9,3 +9,4 @@ class Globals(Configuration):
     
     KEY_MUSICBRAINZ = 'TXXX:MusicBrainz'
     KEY_MUSICBRAINZ_ALBUMID = KEY_MUSICBRAINZ + ' ' + 'Album Id'
+    SDB_DOMAIN_NAME = 'musichastherighttochildren'
