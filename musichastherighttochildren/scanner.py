@@ -18,13 +18,11 @@ class Scanner(Globals):
 
 
 	def main(self):
-		self.SDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
+		self.SimpleDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
 		self.scanCollection()
 		if self.HAS_LASTFM:
 			self.scanLastFM()
 
-	# Setup.
-			
 	def scanCollection(self):
 		u"""
 		Walks through iTunes folders, prints metadata.
@@ -35,10 +33,14 @@ class Scanner(Globals):
 			album = root.split('/')[-1]
 			album = '"' + album + '"'
 			if format and id:
-				print album, id
+				print 'Found metadata for', album, id
+				self.updateDatabase(album, id)
 			elif format and not id:
 				print album, "doesn't contain any files that have MusicBrainz metadata."
-				
+
+	def updateDatabase(self, album, id):
+		self.SimpleDB.addID(album, id)
+		
 	def scanFolder(self, root, files):
 		id = None
 		format = None
