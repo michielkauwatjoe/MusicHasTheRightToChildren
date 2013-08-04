@@ -26,7 +26,9 @@ class SimpleDB:
         #"""
 
     def writeItem(self, *args, **kwargs):
+        u"""
+        """
         item = self.DOMAIN.new_item('item')
-        
-        for key, value in attributes.items():
+
+        for key, value in kwargs.items():
             item[key] = value

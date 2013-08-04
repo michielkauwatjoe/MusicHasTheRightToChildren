@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from musichastherighttochildren.configuration import Configuration
+from configuration.configuration import Configuration
 
 class Globals(Configuration):
     EXTENSION_MP3 = 'mp3'
