@@ -6,24 +6,3 @@ Dependencies:
  * python-musicbrainz2
  * pyechonest
 
-Quick start
------------
-
-On the shell, create a new virtual environment:
-(`apt-get install python-virtualenv` first needed)
-
- » virtualenv
-
-Then install in that virtual environment all the requirements:
-
- » pip -E . install -r requirements.txt
- 
-You can now work inside this virtual environment like so:
-
- » source bin/activate
- » ...
-
-And exit with
-
- » deactive
-
