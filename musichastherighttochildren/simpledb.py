@@ -27,28 +27,32 @@ class SimpleDB:
     def listItems(self):
         pass
 
+    def numberOfItems(self):
+        meta = self.getMetadata()
+        return meta.item_count
+
     def dumpCollection(self):
-        f = open("dump.txt", 'w')
+        f = open("dump.xml", 'w')
         fd = self.DOMAIN.to_xml(f=f)
 
     def getMetadata(self):
         return self.DOMAIN.get_metadata()
 
     def addID(self, album, id):
-        #"""
-        #if 
-        #
-        #else:
+        u"""
+        """
         self.writeItem(album=album, musicbrainzid=id)
-        #"""
 
     def writeItem(self, *args, **kwargs):
         u"""
         Writes key-value pairs to database.
         """
-        item = self.DOMAIN.new_item('item')
+        item_name = kwargs['album']
+        musicbrainzid = kwargs['musicbrainzid']
+        item_attrs = {'musicbrainzid': musicbrainzid}
+        self.DOMAIN.put_attributes(item_name, item_attrs)
 
-        for key, value in kwargs.items():
-            item[key] = value
+        #for key, value in kwargs.items():
+        #    item[key] = value
 
-        print item
+        #print item
