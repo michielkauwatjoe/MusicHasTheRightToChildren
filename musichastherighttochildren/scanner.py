@@ -10,80 +10,82 @@ from globals import Globals
 from simpledb import SimpleDB
 
 class Scanner(Globals):
-	u"""
-	Scans local music collection and stores found metadata in the database.
-	"""
+    u"""
+    Scans local music collection and stores found metadata in the database.
+    """
 
-	years = []
+    years = []
 
-	def main(self):
-		self.SimpleDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
-		self.scanCollection()
-		if self.HAS_LASTFM:
-			self.scanLastFM()
+    def main(self):
+        self.SimpleDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
+        self.scanCollection()
+        self.SimpeDB.dumpCollection()
+        #if self.HAS_LASTFM:
+        #    self.scanLastFM()
 
-	def scanCollection(self):
-		u"""
-		Walks through iTunes folders, prints metadata.
-		TODO: run in a separate process.
-		"""
-		for root, dirs, files in os.walk(self.COLLECTION):
-			id, format = self.scanFolder(root, files)
-			album = root.split('/')[-1]
-			album = '"' + album + '"'
-			if format and id:
-				print 'Found metadata for', album, id
-				self.updateDatabase(album, id)
-			elif format and not id:
-				print album, "doesn't contain any files that have MusicBrainz metadata."
+    def scanCollection(self):
+        u"""
+        Walks through iTunes folders, prints metadata.
+        TODO: run in a separate process.
+        """
+        for root, dirs, files in os.walk(self.COLLECTION):
+            id, format = self.scanFolder(root, files)
+            album = root.split('/')[-1]
+            album = '"' + album + '"'
 
-	def updateDatabase(self, album, id):
-		self.SimpleDB.addID(album, id)
-		
-	def scanFolder(self, root, files):
-		id = None
-		format = None
-		
-		for f in files:
-			id, format = self.scanFile(root, f)
-			if id and format:
-				break
+            if format and id:
+                print 'Found metadata for', album, id
+                self.updateDatabase(album, id)
+            elif format and not id:
+                print album, "doesn't contain any files that have MusicBrainz metadata."
 
-		return id, format
-		
-	def scanFile(self, root, f):
-		id = None
-		format = None
-		
-		if '.' in f:
-			parts = f.split('.')
-			ext = parts[-1]
-			
-			if ext in self.EXTENSIONS:
-				if ext == self.EXTENSION_MP3:
-					format = self.EXTENSION_MP3
-					path = root + '/' + f
-					audio = MP3(path)
-					#print audio.pprint()
-					for key, value in audio.items():
-						if key.startswith(self.KEY_MUSICBRAINZ_ALBUMID):
-							id = value
-		return id, format
+    def updateDatabase(self, album, id):
+        self.SimpleDB.addID(album, id)
 
-	def scanLastFM(self):
-		pass
+    def scanFolder(self, root, files):
+        id = None
+        format = None
+        
+        for f in files:
+            id, format = self.scanFile(root, f)
+            if id and format:
+                break
 
-							
-	# Metadata functionality.
-							
-	def getReleaseId(self, folder):
-		pass
-	
-	# Datastore interface.
-	
-	def storeId(self, id):
-		pass
-	
+        return id, format
+        
+    def scanFile(self, root, f):
+        id = None
+        format = None
+        
+        if '.' in f:
+            parts = f.split('.')
+            ext = parts[-1]
+            
+            if ext in self.EXTENSIONS:
+                if ext == self.EXTENSION_MP3:
+                    format = self.EXTENSION_MP3
+                    path = root + '/' + f
+                    audio = MP3(path)
+                    #print audio.pprint()
+                    for key, value in audio.items():
+                        if key.startswith(self.KEY_MUSICBRAINZ_ALBUMID):
+                            id = value
+        return id, format
+
+    def scanLastFM(self):
+        pass
+
+                            
+    # Metadata functionality.
+                            
+    def getReleaseId(self, folder):
+        pass
+    
+    # Datastore interface.
+    
+    def storeId(self, id):
+        pass
+    
 if __name__ == '__main__':
-	scanner = Scanner()
-	scanner.main()
+    scanner = Scanner()
+    scanner.main()
