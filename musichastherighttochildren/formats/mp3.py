@@ -11,6 +11,7 @@ class EmPeeThree:
     key_date = 'TDRC'
 
     def __init__(self, path):
+        self.path = path
         self.audio = MP3(path)
         self.metadata = {'format': 'mp3'}
         self.addMetadata()
