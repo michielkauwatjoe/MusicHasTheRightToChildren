@@ -1,14 +1,18 @@
-# -*- coding: UTF-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+#
+# https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 import os
 import pylast
-from mutagen.mp3 import MP3
-from mutagen.m4a import M4A
+
 import musicbrainz2.webservice as ws
 import pyechonest
 
 from globals import Globals
 from simpledb import SimpleDB
+from formats.mp3 import EmPeeThree
+from formats.m4a import EmFourAy
 
 class Scanner(Globals):
     u"""
@@ -49,10 +53,11 @@ class Scanner(Globals):
             if i > max:
                 return
             album = self.getAlbum(root, files)
-            print album
-            dict = self.scanFolder(root, files)
-            #self.add(dict)
-
+            if album:
+                dict = self.scanFolder(root, files)
+                if dict:
+                    dict['album'] = album
+                    self.add(**dict)
             i += 1
 
     def add(self, *args, **kwargs):
@@ -63,33 +68,29 @@ class Scanner(Globals):
         
         for f in files:
             d = self.scanFile(root, f)
-            for key in d:
-                if not key in dict:
-                    dict[key] = d[key]
+            if d:
+                for key in d:
+                    if not key in dict:
+                        dict[key] = d[key]
 
         return dict
 
     def scanFile(self, root, f):
-        dict = {}
-
         if '.' in f:
             parts = f.split('.')
             ext = parts[-1]
-            
+
             if ext in self.EXTENSIONS:
-                dict['format'] = ext
                 path = root + '/' + f
 
                 if ext == self.EXTENSION_MP3:
-                    audio = MP3(path)
-                    dict['year'] = str(audio[self.KEY_MP3_YEAR])
-
-                    if self.KEY_MUSICBRAINZ_ALBUMID in audio:
-                        dict['musicbrainz_id'] = str(audio[self.KEY_MUSICBRAINZ_ALBUMID])
+                    mp3 = EmPeeThree(path)
+                    return mp3.metadata
                 elif ext == self.EXTENSION_M4A:
-                    audio = M4A(path)
-                    print audio
-        return dict
+                    m4a = EmFourAy(path)
+                    return m4a.metadata
+            else:
+                print 'Unknown extension %s' % ext
 
     def scanLastFM(self):
         pass

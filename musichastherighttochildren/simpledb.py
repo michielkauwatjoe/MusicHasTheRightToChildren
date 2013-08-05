@@ -1,4 +1,7 @@
-# -*- coding: UTF-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+#
+# https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 import boto
 from boto.exception import SDBResponseError
@@ -51,10 +54,12 @@ class SimpleDB:
         """
         # Always needs album name and year to initialize item.
         album = kwargs['album']
-        year = kwargs['year']
-        attrs = {'year': year}
+        attrs = {'format': kwargs['format']}
 
-        if 'musicbrainz_id' in kwargs:
-            musicbrainzid = kwargs['musicbrainz_id']
-            attrs['musicbrainz_id'] = musicbrainzid
+        fields = ['date', 'musicbrainz_id']
+
+        for f in fields:
+            if f in kwargs:
+                attrs[f] = kwargs[f]
+
         self.DOMAIN.put_attributes(album, attrs)
