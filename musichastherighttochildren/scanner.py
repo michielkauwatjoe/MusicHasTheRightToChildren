@@ -3,6 +3,7 @@
 import os
 import pylast
 from mutagen.mp3 import MP3
+from mutagen.m4a import M4A
 import musicbrainz2.webservice as ws
 import pyechonest
 
@@ -25,6 +26,17 @@ class Scanner(Globals):
         #if self.HAS_LASTFM:
         #    self.scanLastFM()
 
+    def getAlbum(self, path, files):
+        name = path.split('/')[-1]
+        for f in files:
+            if f.startswith('.'):
+                continue
+            else:
+                for extension in self.EXTENSIONS:
+                    if f.endswith(extension):
+                        return name
+        return None
+
     def scanCollection(self):
         u"""
         Walks through iTunes folders, prints metadata.
@@ -36,15 +48,10 @@ class Scanner(Globals):
         for root, dirs, files in os.walk(self.COLLECTION):
             if i > max:
                 return
-            musicbrainzid, format = self.scanFolder(root, files)
-            album = root.split('/')[-1]
-
-            if format and musicbrainzid:
-                #print 'Found metadata for', album, id
-                self.add(album=album, musicbrainzid=id)
-            elif format and not musicbrainzid:
-                self.add(album=album)
-                print album, "doesn't contain any files that have MusicBrainz metadata."
+            album = self.getAlbum(root, files)
+            print album
+            dict = self.scanFolder(root, files)
+            #self.add(dict)
 
             i += 1
 
@@ -52,35 +59,37 @@ class Scanner(Globals):
         self.SimpleDB.add(*args, **kwargs)
 
     def scanFolder(self, root, files):
-        id = None
-        format = None
+        dict = {}
         
         for f in files:
-            id, format = self.scanFile(root, f)
-            if id and format:
-                break
+            d = self.scanFile(root, f)
+            for key in d:
+                if not key in dict:
+                    dict[key] = d[key]
 
-        return id, format
-        
+        return dict
+
     def scanFile(self, root, f):
-        id = None
-        format = None
-        
+        dict = {}
+
         if '.' in f:
             parts = f.split('.')
             ext = parts[-1]
             
             if ext in self.EXTENSIONS:
-                if ext == self.EXTENSION_MP3:
-                    format = self.EXTENSION_MP3
-                    path = root + '/' + f
-                    audio = MP3(path)
+                dict['format'] = ext
+                path = root + '/' + f
 
-                    for key, value in audio.items():
-                        if key.startswith(self.KEY_MUSICBRAINZ_ALBUMID):
-                            id = value
-                            break
-        return id, format
+                if ext == self.EXTENSION_MP3:
+                    audio = MP3(path)
+                    dict['year'] = str(audio[self.KEY_MP3_YEAR])
+
+                    if self.KEY_MUSICBRAINZ_ALBUMID in audio:
+                        dict['musicbrainz_id'] = str(audio[self.KEY_MUSICBRAINZ_ALBUMID])
+                elif ext == self.EXTENSION_M4A:
+                    audio = M4A(path)
+                    print audio
+        return dict
 
     def scanLastFM(self):
         pass

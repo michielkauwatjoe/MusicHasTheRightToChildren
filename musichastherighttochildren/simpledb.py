@@ -43,19 +43,18 @@ class SimpleDB:
     def add(self, *args, **kwargs):
         u"""
         """
-        pass
-        #self.writeItem(*args, **kwargs)
+        self.writeItem(*args, **kwargs)
 
     def writeItem(self, *args, **kwargs):
         u"""
         Writes key-value pairs to database.
         """
-        item_name = kwargs['album']
-        musicbrainzid = kwargs['musicbrainzid']
-        item_attrs = {'musicbrainzid': musicbrainzid}
-        self.DOMAIN.put_attributes(item_name, item_attrs)
+        # Always needs album name and year to initialize item.
+        album = kwargs['album']
+        year = kwargs['year']
+        attrs = {'year': year}
 
-        #for key, value in kwargs.items():
-        #    item[key] = value
-
-        #print item
+        if 'musicbrainz_id' in kwargs:
+            musicbrainzid = kwargs['musicbrainz_id']
+            attrs['musicbrainz_id'] = musicbrainzid
+        self.DOMAIN.put_attributes(album, attrs)
