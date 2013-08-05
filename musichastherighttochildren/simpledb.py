@@ -6,7 +6,9 @@ from boto.exception import SDBResponseError
 
 class SimpleDB:
     u"""
-    Connection to NoSQL.
+    Connection to Amazon AWS SimpleDB (light weight NoSQL). Uses the boto interface:
+    http://boto.readthedocs.org/en/latest/ref/sdb.html
+    http://boto.readthedocs.org/en/latest/simpledb_tut.html
     """
     CONNECTION = None
     DOMAIN = None
@@ -38,10 +40,11 @@ class SimpleDB:
     def getMetadata(self):
         return self.DOMAIN.get_metadata()
 
-    def addID(self, album, id):
+    def add(self, *args, **kwargs):
         u"""
         """
-        self.writeItem(album=album, musicbrainzid=id)
+        pass
+        #self.writeItem(*args, **kwargs)
 
     def writeItem(self, *args, **kwargs):
         u"""

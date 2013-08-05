@@ -36,19 +36,20 @@ class Scanner(Globals):
         for root, dirs, files in os.walk(self.COLLECTION):
             if i > max:
                 return
-            id, format = self.scanFolder(root, files)
+            musicbrainzid, format = self.scanFolder(root, files)
             album = root.split('/')[-1]
 
-            if format and id:
+            if format and musicbrainzid:
                 #print 'Found metadata for', album, id
-                self.updateDatabase(album, id)
-            elif format and not id:
+                self.add(album=album, musicbrainzid=id)
+            elif format and not musicbrainzid:
+                self.add(album=album)
                 print album, "doesn't contain any files that have MusicBrainz metadata."
 
             i += 1
 
-    def updateDatabase(self, album, id):
-        self.SimpleDB.addID(album, id)
+    def add(self, *args, **kwargs):
+        self.SimpleDB.add(*args, **kwargs)
 
     def scanFolder(self, root, files):
         id = None
