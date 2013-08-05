@@ -41,24 +41,37 @@ class Scanner(Globals):
                         return name
         return None
 
+    def printReport(self, list):
+        print 'Processed albums:'
+        for l in list:
+            print ' - %s' % l
+
     def scanCollection(self):
         u"""
         Walks through iTunes folders, prints metadata.
         TODO: run in a separate process.
         """
-        max = 3000
         i = 0
+        limit = 10
+        report = []
 
         for root, dirs, files in os.walk(self.COLLECTION):
-            if i > max:
-                return
+
+            if i > limit:
+                self.printReport(report)
+                i = 0
+                limit = 10
+                report = []
+
             album = self.getAlbum(root, files)
+
             if album:
+                report.append(album)
                 dict = self.scanFolder(root, files)
                 if dict:
                     dict['album'] = album
                     self.add(**dict)
-            i += 1
+                i += 1
 
     def add(self, *args, **kwargs):
         self.SimpleDB.add(*args, **kwargs)
@@ -76,13 +89,14 @@ class Scanner(Globals):
         return dict
 
     def scanFile(self, root, f):
-        if '.' in f:
+        if f.startswith('.'):
+            return
+        elif '.' in f:
+            path = root + '/' + f
             parts = f.split('.')
             ext = parts[-1]
 
             if ext in self.EXTENSIONS:
-                path = root + '/' + f
-
                 if ext == self.EXTENSION_MP3:
                     mp3 = EmPeeThree(path)
                     return mp3.metadata
@@ -90,7 +104,7 @@ class Scanner(Globals):
                     m4a = EmFourAy(path)
                     return m4a.metadata
             else:
-                print 'Unknown extension %s' % ext
+                print 'Unknown extension %s, path is %s' % (ext, path)
 
     def scanLastFM(self):
         pass
