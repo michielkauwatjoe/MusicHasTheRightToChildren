@@ -1,0 +1,154 @@
+/**
+ *
+ */
+
+a:link, a:hover, a:visited, a:active {
+	text-decoration: none;
+	color: #ec008c;
+}
+
+@font-face {
+	/*
+	 * Web Fonts from fontspring.com
+	 *
+	 * All OpenType features and all extended glyphs have been removed.
+	 * Fully installable fonts can be purchased at http://www.fontspring.com
+	 *
+	 * The fonts included in this stylesheet are subject to the End User License you purchased
+	 * from Fontspring. The fonts are protected under domestic and international trademark and 
+	 * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+	 * distributing this font software.
+	 *
+	 * (c) 2010-2012 Fontspring
+	 *
+	 *
+	 *
+	 *
+	 * The fonts included are copyrighted by the vendor listed below.
+	 *
+	 * Vendor:	  Urtd
+	 * License URL: http://www.fontspring.com/fflicense/urtd
+	 *
+	 *
+	 */
+	font-family: "Monoxil";
+	src: url("http://data.factful-planet.com.s3.amazonaws.com/fonts/Monoxil/Monoxil_Regular.otf"),
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Edding850";
+	src: url("http://data.factful-planet.com.s3.amazonaws.com/fonts/Edding850/edding850.otf"),
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Bariol Thin";
+	src: url("http://data.factful-planet.com.s3.amazonaws.com/fonts/Bariol/Bariol_Thin.otf"),
+	font-weight: normal;
+	font-style: normal;
+}
+
+body, html, pre {
+	font-family: "Bariol Thin";
+	color: #633B00;
+}
+
+
+body {
+	padding: 0;
+	margin: 0;
+	background: #212121;
+}
+
+#footer {
+	float: left;
+	background: -moz-linear-gradient(center top , #373737, #212121) repeat scroll 0 0 transparent;
+	width: 100%;
+	height: 3em;
+	margin: 0;
+	padding-top: 1em;
+	text-align:center;
+}
+
+#header {
+    margin: 10px 0;
+	width: 100%;
+	background: -moz-linear-gradient(center top , #bdd3e4, #fff) repeat scroll 0 0 transparent;
+	border-radius: 5px;
+}
+
+#logo {
+	width: 800px;
+	margin: auto;
+	padding-top: 1em;
+}
+
+#content {
+	display: block;
+	background: white;
+}
+
+#menu {
+	width: 15em;
+	margin: auto;
+}
+
+.button {
+	background: blue;
+	border-radius: 5px;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+	color: #ec008c;
+	font-family: "Edding850";
+	font-weight: normal;
+}
+
+#header h1 {
+	font-size: 72px;
+	margin-bottom: 0.1em;
+	margin-top: 0;
+}
+
+h2 {
+	margin-top: 0.1em;
+	font-size: 60px;
+}
+
+#title {
+	width: 24em; margin: auto; text-align:center;
+	text-shadow: 0 0 10px #111111;
+}
+
+#menu-left {
+	float: left;
+	width: 25%;
+	background: white;
+}
+
+#menu-right {
+	float: right;
+	width: 25%;
+	background: white;
+}
+
+#map {
+	margin: auto;
+	width: 50%;
+	float: left;
+	background: white;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

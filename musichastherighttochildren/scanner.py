@@ -97,10 +97,10 @@ class Scanner(Globals):
             ext = parts[-1]
 
             if ext in self.EXTENSIONS:
-                if ext == self.EXTENSION_MP3:
+                if ext.lower() == self.EXTENSION_MP3:
                     mp3 = EmPeeThree(path)
                     return mp3.metadata
-                elif ext == self.EXTENSION_M4A:
+                elif ext.lower() == self.EXTENSION_M4A:
                     m4a = EmFourAy(path)
                     return m4a.metadata
             else:
