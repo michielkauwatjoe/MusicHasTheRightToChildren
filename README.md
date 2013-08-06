@@ -1,4 +1,4 @@
-Visualization of music taste.
+Record collection visualization.
 
 Dependencies:
  * mutagen
