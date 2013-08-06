@@ -3,7 +3,7 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-import os
+import os, codecs
 import pylast
 
 import musicbrainz2.webservice as ws
@@ -22,6 +22,7 @@ class Scanner(Globals):
     years = []
 
     def main(self):
+        self.logfile = codecs.open('log.txt', 'a', 'UTF-8')
         self.SimpleDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
         self.scanCollection()
         self.SimpleDB.dumpCollection()
@@ -42,9 +43,9 @@ class Scanner(Globals):
         return None
 
     def printReport(self, list):
-        print 'Processed albums:'
+        self.addToLog('Processed albums:')
         for l in list:
-            print ' - %s' % l
+            self.addToLog(' - %s' % l)
 
     def scanCollection(self):
         u"""
@@ -97,12 +98,17 @@ class Scanner(Globals):
             ext = parts[-1]
 
             if ext in self.EXTENSIONS:
-                if ext.lower() == self.EXTENSION_MP3:
-                    mp3 = EmPeeThree(path)
-                    return mp3.metadata
-                elif ext.lower() == self.EXTENSION_M4A:
-                    m4a = EmFourAy(path)
-                    return m4a.metadata
+                try:
+                    if ext.lower() == self.EXTENSION_MP3:
+                        file = EmPeeThree(path)
+                    elif ext.lower() == self.EXTENSION_M4A:
+                        file = EmFourAy(path)
+                except Exception, e:
+                    self.addToLog(str(e))
+                    self.addToLog(self.path)
+                    return
+
+                return file.metadata
             else:
                 print 'Unknown extension %s, path is %s' % (ext, path)
 
@@ -119,7 +125,14 @@ class Scanner(Globals):
     
     def storeId(self, id):
         pass
-    
+
+    def addToLog(self, line):
+        u"""
+        <doc>Appends some feedback to log file.</doc>
+        """
+        self.logfile.write(line)
+        self.logfile.write('\n')
+
 if __name__ == '__main__':
     scanner = Scanner()
     scanner.main()
