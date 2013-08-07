@@ -2,3 +2,4 @@
 /dump.txt
 /dump.xml
 *.pyc
+/log.txt

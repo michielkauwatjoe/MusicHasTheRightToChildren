@@ -105,7 +105,7 @@ class Scanner(Globals):
                         file = EmFourAy(path)
                 except Exception, e:
                     self.addToLog(str(e))
-                    self.addToLog(self.path)
+                    self.addToLog(path)
                     return
 
                 return file.metadata
