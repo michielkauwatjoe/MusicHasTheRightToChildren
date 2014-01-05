@@ -1,11 +1,16 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 from mutagen.mp3 import MP3
+from fileformat import FileFormat
 
-class EmPeeThree:
+class EmPeeThree(FileFormat):
+    u"""
+    Retrieves MPEG-1 or MPEG-2 Audio Layer III (MP3) metadata from files.
+    """
+
     key_musicbrainz = 'TXXX:MusicBrainz'
     key_musicbrainz_album_id = key_musicbrainz + ' ' + 'Album Id'
     key_date = 'TDRC'
@@ -17,6 +22,9 @@ class EmPeeThree:
         self.addMetadata()
 
     def addMetadata(self):
+        u"""
+        Adds fields to metadata dictionary.
+        """
         if self.key_date in self.audio:
             self.metadata['date'] = str(self.audio[self.key_date])
         else:
