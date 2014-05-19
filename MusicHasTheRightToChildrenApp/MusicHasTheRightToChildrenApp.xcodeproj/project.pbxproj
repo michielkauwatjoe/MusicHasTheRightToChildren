@@ -6,14 +6,128 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CC230710192A505200C189A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC23070F192A505200C189A6 /* Cocoa.framework */; };
+		CC230712192A505200C189A6 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC230711192A505200C189A6 /* Python.framework */; };
+		CC23071C192A505200C189A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC23071A192A505200C189A6 /* InfoPlist.strings */; };
+		CC23071E192A505200C189A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23071D192A505200C189A6 /* main.m */; };
+		CC230722192A505200C189A6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CC230720192A505200C189A6 /* Credits.rtf */; };
+		CC230724192A505200C189A6 /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230723192A505200C189A6 /* main.py */; };
+		CC230726192A505200C189A6 /* MHTRTCAppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */; };
+		CC230729192A505200C189A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC230727192A505200C189A6 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CC23070C192A505200C189A6 /* MusicHasTheRightToChildrenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHasTheRightToChildrenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC23070F192A505200C189A6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CC230711192A505200C189A6 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = Library/Frameworks/Python.framework; sourceTree = DEVELOPER_DIR; };
+		CC230714192A505200C189A6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CC230715192A505200C189A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CC230716192A505200C189A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CC230719192A505200C189A6 /* MusicHasTheRightToChildrenApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MusicHasTheRightToChildrenApp-Info.plist"; sourceTree = "<group>"; };
+		CC23071B192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CC23071D192A505200C189A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CC23071F192A505200C189A6 /* MusicHasTheRightToChildrenApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicHasTheRightToChildrenApp-Prefix.pch"; sourceTree = "<group>"; };
+		CC230721192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		CC230723192A505200C189A6 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
+		CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MHTRTCAppDelegate.py; sourceTree = "<group>"; };
+		CC230728192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC230709192A505200C189A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC230712192A505200C189A6 /* Python.framework in Frameworks */,
+				CC230710192A505200C189A6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		CC230701192A4FDF00C189A6 = {
 			isa = PBXGroup;
 			children = (
+				CC230717192A505200C189A6 /* MusicHasTheRightToChildrenApp */,
+				CC23070E192A505200C189A6 /* Frameworks */,
+				CC23070D192A505200C189A6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		CC23070D192A505200C189A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC23070C192A505200C189A6 /* MusicHasTheRightToChildrenApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC23070E192A505200C189A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC23070F192A505200C189A6 /* Cocoa.framework */,
+				CC230711192A505200C189A6 /* Python.framework */,
+				CC230713192A505200C189A6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC230713192A505200C189A6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC230714192A505200C189A6 /* AppKit.framework */,
+				CC230715192A505200C189A6 /* CoreData.framework */,
+				CC230716192A505200C189A6 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CC230717192A505200C189A6 /* MusicHasTheRightToChildrenApp */ = {
+			isa = PBXGroup;
+			children = (
+				CC230723192A505200C189A6 /* main.py */,
+				CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */,
+				CC230727192A505200C189A6 /* MainMenu.xib */,
+				CC230718192A505200C189A6 /* Supporting Files */,
+			);
+			path = MusicHasTheRightToChildrenApp;
+			sourceTree = "<group>";
+		};
+		CC230718192A505200C189A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC230719192A505200C189A6 /* MusicHasTheRightToChildrenApp-Info.plist */,
+				CC23071A192A505200C189A6 /* InfoPlist.strings */,
+				CC23071D192A505200C189A6 /* main.m */,
+				CC23071F192A505200C189A6 /* MusicHasTheRightToChildrenApp-Prefix.pch */,
+				CC230720192A505200C189A6 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC23070B192A505200C189A6 /* MusicHasTheRightToChildrenApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC23072A192A505200C189A6 /* Build configuration list for PBXNativeTarget "MusicHasTheRightToChildrenApp" */;
+			buildPhases = (
+				CC230708192A505200C189A6 /* Sources */,
+				CC230709192A505200C189A6 /* Frameworks */,
+				CC23070A192A505200C189A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicHasTheRightToChildrenApp;
+			productName = MusicHasTheRightToChildrenApp;
+			productReference = CC23070C192A505200C189A6 /* MusicHasTheRightToChildrenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CC230702192A4FDF00C189A6 /* Project object */ = {
@@ -29,12 +143,67 @@
 				en,
 			);
 			mainGroup = CC230701192A4FDF00C189A6;
+			productRefGroup = CC23070D192A505200C189A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				CC23070B192A505200C189A6 /* MusicHasTheRightToChildrenApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC23070A192A505200C189A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC230724192A505200C189A6 /* main.py in Resources */,
+				CC230729192A505200C189A6 /* MainMenu.xib in Resources */,
+				CC230726192A505200C189A6 /* MHTRTCAppDelegate.py in Resources */,
+				CC23071C192A505200C189A6 /* InfoPlist.strings in Resources */,
+				CC230722192A505200C189A6 /* Credits.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC230708192A505200C189A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC23071E192A505200C189A6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CC23071A192A505200C189A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC23071B192A505200C189A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CC230720192A505200C189A6 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC230721192A505200C189A6 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		CC230727192A505200C189A6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC230728192A505200C189A6 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CC230706192A4FDF00C189A6 /* Debug */ = {
@@ -49,6 +218,94 @@
 			};
 			name = Release;
 		};
+		CC23072B192A505200C189A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MusicHasTheRightToChildrenApp/MusicHasTheRightToChildrenApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "MusicHasTheRightToChildrenApp/MusicHasTheRightToChildrenApp-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CC23072C192A505200C189A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MusicHasTheRightToChildrenApp/MusicHasTheRightToChildrenApp-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "MusicHasTheRightToChildrenApp/MusicHasTheRightToChildrenApp-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -60,6 +317,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CC23072A192A505200C189A6 /* Build configuration list for PBXNativeTarget "MusicHasTheRightToChildrenApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC23072B192A505200C189A6 /* Debug */,
+				CC23072C192A505200C189A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
