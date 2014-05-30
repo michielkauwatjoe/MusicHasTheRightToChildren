@@ -11,5 +11,6 @@ from Foundation import *
 from AppKit import *
 
 class MHTRTCAppDelegate(NSObject):
+
     def applicationDidFinishLaunching_(self, sender):
         NSLog("Application did finish launching.")

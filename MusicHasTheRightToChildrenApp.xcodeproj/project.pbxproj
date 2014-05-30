@@ -8,19 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		CC230710192A505200C189A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC23070F192A505200C189A6 /* Cocoa.framework */; };
-		CC230712192A505200C189A6 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC230711192A505200C189A6 /* Python.framework */; };
 		CC23071C192A505200C189A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC23071A192A505200C189A6 /* InfoPlist.strings */; };
 		CC23071E192A505200C189A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC23071D192A505200C189A6 /* main.m */; };
 		CC230722192A505200C189A6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CC230720192A505200C189A6 /* Credits.rtf */; };
 		CC230724192A505200C189A6 /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230723192A505200C189A6 /* main.py */; };
 		CC230726192A505200C189A6 /* MHTRTCAppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */; };
 		CC230729192A505200C189A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC230727192A505200C189A6 /* MainMenu.xib */; };
+		CCA4E8891938CAD000FD9233 /* libpython2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CC23070C192A505200C189A6 /* MusicHasTheRightToChildrenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHasTheRightToChildrenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC23070F192A505200C189A6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		CC230711192A505200C189A6 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = Library/Frameworks/Python.framework; sourceTree = DEVELOPER_DIR; };
 		CC230714192A505200C189A6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		CC230715192A505200C189A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CC230716192A505200C189A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,6 +31,7 @@
 		CC230723192A505200C189A6 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MHTRTCAppDelegate.py; sourceTree = "<group>"; };
 		CC230728192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpython2.7.dylib; path = ../../../../../System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/libpython2.7.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC230712192A505200C189A6 /* Python.framework in Frameworks */,
+				CCA4E8891938CAD000FD9233 /* libpython2.7.dylib in Frameworks */,
 				CC230710192A505200C189A6 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +53,8 @@
 				CC230717192A505200C189A6 /* MusicHasTheRightToChildrenApp */,
 				CC23070E192A505200C189A6 /* Frameworks */,
 				CC23070D192A505200C189A6 /* Products */,
+				CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */,
+				CC230720192A505200C189A6 /* Credits.rtf */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				CC23070F192A505200C189A6 /* Cocoa.framework */,
-				CC230711192A505200C189A6 /* Python.framework */,
 				CC230713192A505200C189A6 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -102,7 +103,6 @@
 				CC23071A192A505200C189A6 /* InfoPlist.strings */,
 				CC23071D192A505200C189A6 /* main.m */,
 				CC23071F192A505200C189A6 /* MusicHasTheRightToChildrenApp-Prefix.pch */,
-				CC230720192A505200C189A6 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -193,6 +193,7 @@
 				CC230721192A505200C189A6 /* en */,
 			);
 			name = Credits.rtf;
+			path = MusicHasTheRightToChildrenApp;
 			sourceTree = "<group>";
 		};
 		CC230727192A505200C189A6 /* MainMenu.xib */ = {
@@ -256,7 +257,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7,
+				);
 				INFOPLIST_FILE = "MusicHasTheRightToChildrenApp/MusicHasTheRightToChildrenApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -298,7 +308,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7,
+				);
 				INFOPLIST_FILE = "MusicHasTheRightToChildrenApp/MusicHasTheRightToChildrenApp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -325,6 +344,7 @@
 				CC23072C192A505200C189A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
