@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
@@ -14,7 +14,7 @@ from simpledb import SimpleDB
 from formats.mp3 import EmPeeThree
 from formats.m4a import EmFourAy
 
-class Scanner(Globals):
+class CollectionScanner(Globals):
     u"""
     Scans local music collection and stores found metadata in the database.
     """
@@ -30,6 +30,8 @@ class Scanner(Globals):
         print 'Number of items is %d.' % n
         #if self.HAS_LASTFM:
         #    self.scanLastFM()
+        #if self.HAS_DISCOGS:
+        #    self.scanDiscogs()
 
     def getAlbum(self, path, files):
         name = path.split('/')[-1]
@@ -79,7 +81,7 @@ class Scanner(Globals):
 
     def scanFolder(self, root, files):
         dict = {}
-        
+
         for f in files:
             d = self.scanFile(root, f)
             if d:
@@ -115,14 +117,14 @@ class Scanner(Globals):
     def scanLastFM(self):
         pass
 
-                            
+
     # Metadata functionality.
-                            
+
     def getReleaseId(self, folder):
         pass
-    
+
     # Datastore interface.
-    
+
     def storeId(self, id):
         pass
 
