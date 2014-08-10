@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-class Configuration():
+class Settings():
     u"""
     Copy file to configuration.py, which is ignored by version control, and add user credentials &c.
     """
