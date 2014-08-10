@@ -6,5 +6,6 @@ class Configuration():
     """
     COLLECTION = '/Users/michiel/Music/iTunes/iTunes Music/Music'
     HAS_LASTFM = True
+    HAS_DISCOGS = True
     AWS_ACCESS_KEY = ''
     AWS_SECRET_KEY = ''
