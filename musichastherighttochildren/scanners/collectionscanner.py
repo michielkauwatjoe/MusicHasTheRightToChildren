@@ -3,18 +3,19 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-import os, codecs
-import pylast
 
+import os, codecs
+
+import pylast
 import musicbrainz2.webservice as ws
 import pyechonest
 
-from globals import Globals
-from simpledb import SimpleDB
-from formats.mp3 import EmPeeThree
-from formats.m4a import EmFourAy
+from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+from musichastherighttochildren.database.simpledb import SimpleDB
+from musichastherighttochildren.formats.mp3 import EmPeeThree
+from musichastherighttochildren.formats.m4a import EmFourAy
 
-class CollectionScanner(Globals):
+class CollectionScanner(MHTRTCGlobals):
     u"""
     Scans local music collection and stores found metadata in the database.
     """
