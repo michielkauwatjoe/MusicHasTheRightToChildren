@@ -26,9 +26,9 @@ class CollectionScanner(MHTRTCGlobals):
         self.logfile = codecs.open('log.txt', 'a', 'UTF-8')
         self.SimpleDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
         self.scanCollection()
-        self.SimpleDB.dumpCollection()
-        n = self.SimpleDB.numberOfItems()
-        print 'Number of items is %d.' % n
+        #self.SimpleDB.dumpCollection()
+        #n = self.SimpleDB.numberOfItems()
+        #print 'Number of items is %d.' % n
         #if self.HAS_LASTFM:
         #    self.scanLastFM()
         #if self.HAS_DISCOGS:
@@ -137,5 +137,5 @@ class CollectionScanner(MHTRTCGlobals):
         self.logfile.write('\n')
 
 if __name__ == '__main__':
-    scanner = Scanner()
+    scanner = CollectionScanner()
     scanner.main()
