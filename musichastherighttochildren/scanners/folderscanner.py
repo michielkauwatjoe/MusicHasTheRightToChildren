@@ -14,11 +14,19 @@ class FolderScanner(MHTRTCGlobals):
     def __init__(self):
         pass
 
+    def walk(self, path):
+        collection = {}
+
+        for artist, albums, _ in os.walk(path):
+            if len(albums) > 0:
+                print self.stripArtist(artist), albums
+
+
+    def stripArtist(self, artist):
+        return artist.replace(self.COLLECTION, '')
 
     def main(self):
-        print self.COLLECTION
-        for root, dirs, files in os.walk(self.COLLECTION):
-            print root, dirs, files
+        itunes = self.walk(self.COLLECTION)
 
 if __name__ == '__main__':
     scanner = FolderScanner()
