@@ -18,6 +18,9 @@ class FolderScanner(MHTRTCGlobals):
         collection = {}
 
         for artist, albums, _ in os.walk(path):
+            if artist == self.COLLECTION:
+                # Skips base folder.
+                continue
             if len(albums) > 0:
                 collection[self.stripArtist(artist)] = albums
 
