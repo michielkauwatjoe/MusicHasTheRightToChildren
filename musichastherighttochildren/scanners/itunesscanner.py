@@ -6,20 +6,27 @@ import sys
 import os
 import Foundation
 
-class iTunesScanner(object):
+from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+
+class iTunesScanner(MHTRTCGlobals):
     u"""
     PyObjc solution for access to the iTunes library.
     """
 
-    def scan_itunes_library(library_file):
+    def scan(self, library_file=None):
         u"""
         """
+        libfile = library_file or self.LIBRARY
 
         # Load iTunes library
-        db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(library_file)
+        db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(libfile)
 
+        self.checkFilesExist(db)
+
+    def checkFilesExist(self, db):
         # Check track info.
         for track in db[u'Tracks'].itervalues():
+            print track
 
             if u'Location' not in track:
                 print 'No location info in track info', track
@@ -36,5 +43,5 @@ class iTunesScanner(object):
                 print "Don't know how to check", nsurl
 
 if __name__ == '__main__':
-    is = iTunesScanner()
-    is.scan_itunes_library(library_file=sys.argv[1])
+    scanner = iTunesScanner()
+    scanner.scan()
