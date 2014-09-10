@@ -68,11 +68,19 @@ class iTunesScanner(MHTRTCGlobals):
         """
         for track in self.tracks.itervalues():
             tid = track['Track ID']
+            compilation = False
+            artist = None
 
-            if 'Album Artist' in track:
-                artist = track['Album Artist']
-            elif 'Artist' in track:
+            if 'Artist' in track:
                 artist = track['Artist']
+
+            if 'Compilation' in track and track['Compilation'] == 1:
+                albumartist = 'Compilation'
+                compilation = True
+            elif 'Album Artist' in track:
+                albumartist = track['Album Artist']
+            elif artist:
+                albumartist = artist
             else:
                 print 'Unknown artist for track ID %d' % tid
                 continue
@@ -89,9 +97,9 @@ class iTunesScanner(MHTRTCGlobals):
             if 'Disc Number' in track:
                 disc = track['Disc Number']
             else:
-                print 'Unknown number for track %d (ID), %s' % (tid, title)
                 disc = 1
-                print 'Assuming disc number is %d' % disc
+                #print 'Unknown number for track %d (ID), %s' % (tid, title)
+                #print 'Assuming disc number is %d' % disc
 
             if artist not in self.titleindex:
                 self.titleindex[artist] = {}
@@ -102,9 +110,12 @@ class iTunesScanner(MHTRTCGlobals):
             if disc not in self.titleindex[artist][album]:
                 self.titleindex[artist][album][disc] = {}
 
-            self.titleindex[artist][album][disc][nr] = {'title': title, 'tid': tid}
+            if not compilation:
+                self.titleindex[artist][album][disc][nr] = {'title': title, 'tid': tid}
+            else:
+                self.titleindex[artist][album][disc][nr] = {'title': title, 'tid': tid, 'artist': artist}
 
-        print self.titleindex.items()
+        print self.titleindex
 
     def checkFilesExist(self):
         # Check track info.
