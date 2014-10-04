@@ -114,19 +114,19 @@ class iTunes(MHTRTCGlobals):
                 #print 'Unknown number for track %d (ID), %s' % (tid, title)
                 #print 'Assuming disc number is %d' % disc
 
-            if artist not in self.titleindex:
-                self.titleindex[artist] = {}
+            if albumartist not in self.titleindex:
+                self.titleindex[albumartist] = {}
 
-            if album not in self.titleindex[artist]:
-                self.titleindex[artist][album] = {}
+            if album not in self.titleindex[albumartist]:
+                self.titleindex[albumartist][album] = {}
 
-            if disc not in self.titleindex[artist][album]:
-                self.titleindex[artist][album][disc] = {}
+            if disc not in self.titleindex[albumartist][album]:
+                self.titleindex[albumartist][album][disc] = {}
 
             if not compilation:
-                self.titleindex[artist][album][disc][nr] = {'title': title, 'tid': tid}
+                self.titleindex[albumartist][album][disc][nr] = {'title': title, 'tid': tid}
             else:
-                self.titleindex[artist][album][disc][nr] = {'title': title, 'tid': tid, 'artist': artist}
+                self.titleindex[albumartist][album][disc][nr] = {'title': title, 'tid': tid, 'artist': artist}
 
         self.printVerbose()
 
@@ -144,13 +144,7 @@ class iTunes(MHTRTCGlobals):
                         for discnr, disc in discs.items():
                             print Fore.BLACK + Back.YELLOW + 'Disc #%s' % discnr
                             for tracknr, track in disc.items():
-                                print Fore.WHITE + Back.YELLOW + 'Track 0%s-%s - %s' % (discnr, tracknr, track['title'])
-
-                    '''
-                    if isinstance(v, dict):
-                        for track, v in value.items():
-                        print '  -> Track: %s' % k
-                    '''
+                                print Fore.WHITE + Back.YELLOW + 'Track %s-%02d - %s' % (discnr, int(tracknr), track['title'])
 
     def checkFilesExist(self):
         # Check track info.
