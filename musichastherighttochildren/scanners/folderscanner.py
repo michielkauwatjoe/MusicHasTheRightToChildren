@@ -32,20 +32,23 @@ class FolderScanner(MHTRTCGlobals):
     def backupPath(self, artist, album):
         return self.BACKUP + artist + '/' + album
 
-
     def backedUp(self, path):
         if os.path.exists(path):
             return True
         return False
 
     def main(self):
+        if not os.path.exists(self.BACKUP):
+            print 'Backup path %s does not exist, you might need to mount the harddrive.' % self.BACKUP
+            return
+
         itunes = self.walk(self.COLLECTION)
 
         for artist, albums in itunes.items():
             for album in albums:
                 path = self.backupPath(artist, album)
                 if not self.backedUp(path):
-                    print path
+                    print 'Please back up %s' % path
 
 if __name__ == '__main__':
     scanner = FolderScanner()
