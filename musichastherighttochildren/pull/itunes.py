@@ -5,6 +5,16 @@
 import sys
 import os
 import Foundation
+from colorama import init as colorinit
+from colorama import Fore, Back, Style
+
+'''
+Colorama options:
+
+Fore: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
+Back: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
+Style: DIM, NORMAL, BRIGHT, RESET_ALL
+'''
 
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 
@@ -12,6 +22,9 @@ class iTunes(MHTRTCGlobals):
     u"""
     PyObjc solution for access to the iTunes library.
     """
+
+    def __init__(self):
+        colorinit(autoreset=True)
 
     def scan(self, library_file=None):
         u"""
@@ -122,12 +135,17 @@ class iTunes(MHTRTCGlobals):
         Nested text output.
         TODO: HTML output.
         """
-        for key, value in self.titleindex.items():
-            print 'Artist: %s' % key
-            if isinstance(value, dict):
-                for k, v in value.items():
-                    print '-> Album: %s' % k
-                    print v
+        for artist, albums in self.titleindex.items():
+            print Fore.BLUE + Back.RED + 'Artist: %s' % artist
+            if isinstance(albums, dict):
+                for album, discs in albums.items():
+                    print Fore.BLACK + Back.BLUE + Style.DIM + 'Album: %s' % album
+                    if isinstance(discs, dict):
+                        for discnr, disc in discs.items():
+                            print Fore.BLACK + Back.YELLOW + 'Disc #%s' % discnr
+                            for tracknr, track in disc.items():
+                                print Fore.WHITE + Back.YELLOW + 'Track 0%s-%s - %s' % (discnr, tracknr, track['title'])
+
                     '''
                     if isinstance(v, dict):
                         for track, v in value.items():
