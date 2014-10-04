@@ -115,7 +115,24 @@ class iTunes(MHTRTCGlobals):
             else:
                 self.titleindex[artist][album][disc][nr] = {'title': title, 'tid': tid, 'artist': artist}
 
-        print self.titleindex
+        self.printVerbose()
+
+    def printVerbose(self):
+        u"""
+        Nested text output.
+        TODO: HTML output.
+        """
+        for key, value in self.titleindex.items():
+            print 'Artist: %s' % key
+            if isinstance(value, dict):
+                for k, v in value.items():
+                    print '-> Album: %s' % k
+                    print v
+                    '''
+                    if isinstance(v, dict):
+                        for track, v in value.items():
+                        print '  -> Track: %s' % k
+                    '''
 
     def checkFilesExist(self):
         # Check track info.
