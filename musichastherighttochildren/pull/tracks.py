@@ -6,7 +6,7 @@
 import os
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 
-class FileScanner(MHTRTCGlobals):
+class Tracks(MHTRTCGlobals):
     u"""
     Checks folder integrity for given path.
     """
@@ -34,5 +34,5 @@ class FileScanner(MHTRTCGlobals):
         print itunes
 
 if __name__ == '__main__':
-    scanner = FileScanner()
-    scanner.main()
+    tracks = Tracks()
+    tracks.main()

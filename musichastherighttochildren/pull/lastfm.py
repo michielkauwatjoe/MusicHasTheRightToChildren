@@ -3,5 +3,9 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-class LastFMScanner(object):
+class LastFM(object):
     pass
+
+if __name__ == '__main__':
+    lastfm = LastFM()
+    lastfm.main()

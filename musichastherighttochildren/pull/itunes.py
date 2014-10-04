@@ -8,7 +8,7 @@ import Foundation
 
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 
-class iTunesScanner(MHTRTCGlobals):
+class iTunes(MHTRTCGlobals):
     u"""
     PyObjc solution for access to the iTunes library.
     """
@@ -136,5 +136,5 @@ class iTunesScanner(MHTRTCGlobals):
                 print "Don't know how to check", nsurl
 
 if __name__ == '__main__':
-    scanner = iTunesScanner()
-    scanner.scan()
+    itunes = iTunes()
+    itunes.scan()

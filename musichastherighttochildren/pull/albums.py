@@ -6,7 +6,7 @@
 import os
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 
-class FolderScanner(MHTRTCGlobals):
+class Albums(MHTRTCGlobals):
     u"""
     Compares folder structure of iTunes collection to backup repository.
     """
@@ -42,14 +42,15 @@ class FolderScanner(MHTRTCGlobals):
             print 'Backup path %s does not exist, you might need to mount the harddrive.' % self.BACKUP
             return
 
-        itunes = self.walk(self.COLLECTION)
+        collection = self.walk(self.COLLECTION)
 
-        for artist, albums in itunes.items():
+        for artist, albums in collection.items():
             for album in albums:
                 path = self.backupPath(artist, album)
                 if not self.backedUp(path):
                     print 'Please back up %s' % path
 
 if __name__ == '__main__':
-    scanner = FolderScanner()
-    scanner.main()
+    albums = Albums()
+    albums.main()
+

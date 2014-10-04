@@ -15,7 +15,7 @@ from musichastherighttochildren.database.simpledb import SimpleDB
 from musichastherighttochildren.formats.mp3 import EmPeeThree
 from musichastherighttochildren.formats.m4a import EmFourAy
 
-class CollectionScanner(MHTRTCGlobals):
+class Meta(MHTRTCGlobals):
     u"""
     Scans local music collection and stores found metadata in the database.
     """
@@ -25,7 +25,7 @@ class CollectionScanner(MHTRTCGlobals):
     def main(self):
         self.logfile = codecs.open('log.txt', 'a', 'UTF-8')
         self.SimpleDB = SimpleDB(self.AWS_ACCESS_KEY, self.AWS_SECRET_KEY, self.SDB_DOMAIN_NAME)
-        self.scanCollection()
+        self.pullMeta()
         #self.SimpleDB.dumpCollection()
         #n = self.SimpleDB.numberOfItems()
         #print 'Number of items is %d.' % n
@@ -50,7 +50,7 @@ class CollectionScanner(MHTRTCGlobals):
         for l in list:
             self.addToLog(' - %s' % l)
 
-    def scanCollection(self):
+    def pullMeta(self):
         u"""
         Walks through iTunes folders, prints metadata.
         TODO: run in a separate process.
@@ -137,5 +137,5 @@ class CollectionScanner(MHTRTCGlobals):
         self.logfile.write('\n')
 
 if __name__ == '__main__':
-    scanner = CollectionScanner()
-    scanner.main()
+    meta = Meta()
+    meta.main()
