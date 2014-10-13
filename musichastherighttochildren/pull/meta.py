@@ -5,10 +5,9 @@
 
 
 import os, codecs
-
-import pylast
 import musicbrainz2.webservice as ws
-import pyechonest
+
+#import pyechonest
 
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 from musichastherighttochildren.database.simpledb import SimpleDB
@@ -117,7 +116,6 @@ class Meta(MHTRTCGlobals):
 
     def scanLastFM(self):
         pass
-
 
     # Metadata functionality.
 

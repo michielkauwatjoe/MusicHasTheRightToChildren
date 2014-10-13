@@ -3,6 +3,8 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
+import pylast
+
 class LastFM(object):
     pass
 

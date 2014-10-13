@@ -11,20 +11,26 @@ class Albums(MHTRTCGlobals):
     Compares folder structure of iTunes collection to backup repository.
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, check=True):
+        u"""
+        Collects all album titles and stores them under the (sort) artist name.
+        """
+        self.collection = {}
+        self.load()
+
+        #if check:
+        #    self.checkBackedUp()
+
+        print self.collection
 
     def walk(self, path):
-        collection = {}
 
         for artist, albums, _ in os.walk(path):
             if artist == self.COLLECTION:
                 # Skips base folder.
                 continue
             if len(albums) > 0:
-                collection[self.stripArtist(artist)] = albums
-
-        return collection
+                self.collection[self.stripArtist(artist)] = albums
 
     def stripArtist(self, artist):
         return artist.replace(self.COLLECTION, '')
@@ -37,14 +43,14 @@ class Albums(MHTRTCGlobals):
             return True
         return False
 
-    def main(self):
+    def load(self):
         if not os.path.exists(self.BACKUP):
             print 'Backup path %s does not exist, you might need to mount the harddrive.' % self.BACKUP
             return
+        self.walk(self.COLLECTION)
 
-        collection = self.walk(self.COLLECTION)
-
-        for artist, albums in collection.items():
+    def checkBackedUp(self):
+        for artist, albums in self.collection.items():
             for album in albums:
                 path = self.backupPath(artist, album)
                 if not self.backedUp(path):
@@ -52,5 +58,4 @@ class Albums(MHTRTCGlobals):
 
 if __name__ == '__main__':
     albums = Albums()
-    albums.main()
 

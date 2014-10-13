@@ -25,6 +25,9 @@ class EmPeeThree(FileFormat):
         u"""
         Adds fields to metadata dictionary.
         """
+        for key, value in self.audio.items():
+            print key, value
+
         if self.key_date in self.audio:
             self.metadata['date'] = str(self.audio[self.key_date])
         else:
