@@ -21,6 +21,9 @@ class Tracks(MHTRTCGlobals):
         self.tracks['root'] = root
         self.load()
 
+    def asDict(self):
+        return self.tracks
+
     def load(self):
         if self.verbose:
             Shell.printAlbum(self.root)
