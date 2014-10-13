@@ -5,18 +5,9 @@
 import sys
 import os
 import Foundation
-from colorama import init as colorinit
-from colorama import Fore, Back, Style
-
-'''
-Colorama options:
-
-Fore: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
-Back: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
-Style: DIM, NORMAL, BRIGHT, RESET_ALL
-'''
-
+from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+from colorama import init as colorinit
 
 class iTunes(MHTRTCGlobals):
     u"""
@@ -136,15 +127,15 @@ class iTunes(MHTRTCGlobals):
         TODO: HTML output.
         """
         for artist, albums in self.titleindex.items():
-            print Fore.BLUE + Back.RED + 'Artist: %s' % artist
+            Shell.printArtist(artist)
             if isinstance(albums, dict):
                 for album, discs in albums.items():
-                    print Fore.BLACK + Back.BLUE + Style.DIM + 'Album: %s' % album
+                    Shell.printAlbum(album)
                     if isinstance(discs, dict):
                         for discnr, disc in discs.items():
-                            print Fore.BLACK + Back.YELLOW + 'Disc #%s' % discnr
+                            Shell.printDiscNr(discnr)
                             for tracknr, track in disc.items():
-                                print Fore.WHITE + Back.YELLOW + 'Track %s-%02d - %s' % (discnr, int(tracknr), track['title'])
+                                Shell.printTrack(discnr, tracknr, track['title'])
 
     def checkFilesExist(self):
         # Check track info.

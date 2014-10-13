@@ -4,24 +4,34 @@
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 import os
+from colorama import init as colorinit
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+from musichastherighttochildren.aux.shell import Shell
 
 class Albums(MHTRTCGlobals):
     u"""
     Compares folder structure of iTunes collection to backup repository.
     """
 
-    def __init__(self, check=True):
+    def __init__(self, check=True, verbose=True):
         u"""
         Collects all album titles and stores them under the (sort) artist name.
         """
+        colorinit(autoreset=True)
         self.collection = {}
         self.load()
 
-        #if check:
-        #    self.checkBackedUp()
+        if check:
+            self.checkBackedUp()
 
-        print self.collection
+        if verbose:
+            self.printCollection()
+
+    def printCollection(self):
+        for artist in sorted(self.collection.keys()):
+            Shell.printArtist(artist)
+            for album in sorted(self.collection[artist]):
+                Shell.printAlbum(album)
 
     def walk(self, path):
 
