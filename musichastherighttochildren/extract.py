@@ -7,6 +7,8 @@ from mhtrtcglobals import MHTRTCGlobals
 from pull.albums import Albums
 from pull.tracks import Tracks
 from musichastherighttochildren.aux.shell import Shell
+import csv
+import json
 
 class Extract(MHTRTCGlobals):
 
@@ -22,6 +24,24 @@ class Extract(MHTRTCGlobals):
                 break
             i += 1
             tracks = Tracks(path)
+
+        discogs = self.readCSV()
+        discogs_json = json.dumps(discogs)
+
+
+    def readCSV(self):
+        discogs = {}
+        with open('data/al-khwarizmi-collection-20141013-1124.csv', 'rb') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                artist = row[1]
+                album = '%s (%s)' % (row[2], row[4])
+
+                if not artist in discogs:
+                    discogs[artist] = []
+                discogs[artist].append(album)
+        return discogs
+
 
     def cacheArtwork(self):
         u"""

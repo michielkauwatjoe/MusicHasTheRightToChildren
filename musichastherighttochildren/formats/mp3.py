@@ -15,11 +15,6 @@ class EmPeeThree(FileFormat):
     http://id3.org/id3v2.4.0-frames
     """
 
-    artist = 'TPE1'
-    album = 'TALB'
-    track = 'TIT2'
-    tracknr = 'TRCK'
-    disc = 'TPOS'
 
     txxx = 'TXXX:'
     key_musicbrainz = 'TXXX:MusicBrainz'
@@ -27,9 +22,16 @@ class EmPeeThree(FileFormat):
     key_date = 'TDRC'
 
     def __init__(self, path):
+        self.artist = None
+        self.album = None
+        self.track = None
+        self.tracknr = None
+        self.tracktotal = None
+        self.discnr = None
+        self.disctotal = None
+        self.fileformat = 'mp3'
         self.path = path
-        self.mp3 = MP3(path)
-        self.metadata = {'format': 'mp3'}
+        self.metadata = MP3(path)
         self.loadMetadata()
 
         ######Shell.printTrack('', '0', self.path)
@@ -39,9 +41,11 @@ class EmPeeThree(FileFormat):
         Adds fields to metadata dictionary.
         """
 
-        Shell.printArtist(self.mp3[self.artist])
-        Shell.printAlbum(self.mp3[self.album])
-        frame = self.mp3[self.tracknr]
+        self.artist = self.metadata['TPE1']
+        self.album = self.metadata['TALB']
+        Shell.printArtist(self.artist)
+        Shell.printAlbum(self.album)
+        frame = self.metadata['TRCK']
         tracknr, numberoftracks = str(frame).split('/')
         print tracknr
         #print frame.pprint()
