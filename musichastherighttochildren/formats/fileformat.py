@@ -11,5 +11,5 @@ class FileFormat(object):
     def __init__(self):
         pass
 
-    def addMetadata(self):
+    def loadMetadata(self):
         print '[This function is required and should be overridden in subclass]'

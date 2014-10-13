@@ -18,9 +18,9 @@ class EmFourAy(FileFormat):
         self.path = path
         self.audio = M4A(path)
         self.metadata = {'format': 'm4a'}
-        self.addMetadata()
+        self.loadMetadata()
 
-    def addMetadata(self):
+    def loadMetadata(self):
         u"""
         Adds fields to metadata dictionary.
         """

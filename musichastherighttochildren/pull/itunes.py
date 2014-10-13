@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
+
 import sys
 import os
 import Foundation
+from colorama import init as colorinit
+
 from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
-from colorama import init as colorinit
 
 class iTunes(MHTRTCGlobals):
     u"""
