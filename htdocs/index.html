@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="MusicHasTheRightToChildren" ng-controller="NHTRTCController">
+<html lang="en" ng-app="MusicHasTheRightToChildren" ng-controller="MHTRTCController">
 
 <head>
 	<link href="http://data.musichastherighttochildren.com.s3.amazonaws.com/favicon.ico" rel="shortcut icon">
@@ -15,7 +15,7 @@
 
 <title>Music Has the Right to Children</title>
 </head>
-<body>
+<body >
 
 <div id="header">
 
@@ -23,6 +23,12 @@
 </div>
 
 <div id="content">
+
+<div ng-controller="PostsCtrl">
+	<ul ng-repeat="record in records">
+	<li>{{record.title}}</li>
+	</ul>
+</div>
 
 </div>
 
