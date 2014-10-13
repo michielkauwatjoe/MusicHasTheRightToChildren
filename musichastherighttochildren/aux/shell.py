@@ -20,6 +20,10 @@ class Shell(object):
     """
 
     @classmethod
+    def initColorama(cls):
+        colorinit(autoreset=True)
+
+    @classmethod
     def printArtist(cls, artist):
         print Fore.BLUE + Back.RED + 'Artist: %s' % artist
 

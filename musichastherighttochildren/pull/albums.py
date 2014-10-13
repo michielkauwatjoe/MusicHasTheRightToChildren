@@ -10,12 +10,12 @@ from musichastherighttochildren.aux.shell import Shell
 
 class Albums(MHTRTCGlobals):
     u"""
-    Compares folder structure of iTunes collection to backup repository.
+    Collects all album titles and stores them under the (sort) artist name.
+    Optionally compares folder structure of iTunes collection to backup repository.
     """
 
-    def __init__(self, check=True, verbose=True):
+    def __init__(self, check=False, verbose=False):
         u"""
-        Collects all album titles and stores them under the (sort) artist name.
         """
         colorinit(autoreset=True)
         self.collection = {}
@@ -25,9 +25,22 @@ class Albums(MHTRTCGlobals):
             self.checkBackedUp()
 
         if verbose:
-            self.printCollection()
+            self.printVerbose()
 
-    def printCollection(self):
+    def asDict(self):
+        return self.collection
+
+    def asPaths(self):
+        u"""
+        Returns relative paths for artist-album combinations.
+        """
+        l = []
+        for artist, albums in self.collection.items():
+            for album in albums:
+                l.append(artist + '/' + album)
+        return l
+
+    def printVerbose(self):
         for artist in sorted(self.collection.keys()):
             Shell.printArtist(artist)
             for album in sorted(self.collection[artist]):
@@ -67,5 +80,5 @@ class Albums(MHTRTCGlobals):
                     print 'Please back up %s' % path
 
 if __name__ == '__main__':
-    albums = Albums()
+    albums = Albums(check=True, verbose=True)
 
