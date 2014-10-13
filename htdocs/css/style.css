@@ -7,6 +7,16 @@ a:link, a:hover, a:visited, a:active {
 	color: #ec008c;
 }
 
+@import url('http://bucket.gomiyama.com.s3.amazonaws.com/fonts/bariol/style.css');
+
+body {
+    background: url('http://data.musichastherighttochildren.com.s3.amazonaws.com/background.jpg');
+    font: 16px/22px "Bariol Regular", Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
 @font-face {
 	/*
 	 * Web Fonts from fontspring.com
@@ -44,24 +54,6 @@ a:link, a:hover, a:visited, a:active {
 	font-style: normal;
 }
 
-@font-face {
-	font-family: "Bariol Thin";
-	src: url("http://data.factful-planet.com.s3.amazonaws.com/fonts/Bariol/Bariol_Thin.otf"),
-	font-weight: normal;
-	font-style: normal;
-}
-
-body, html, pre {
-	font-family: "Bariol Thin";
-	color: #633B00;
-}
-
-
-body {
-	padding: 0;
-	margin: 0;
-	background: #212121;
-}
 
 #footer {
 	float: left;
@@ -74,10 +66,8 @@ body {
 }
 
 #header {
-    margin: 10px 0;
+    margin: 10px;
 	width: 100%;
-	background: -moz-linear-gradient(center top , #bdd3e4, #fff) repeat scroll 0 0 transparent;
-	border-radius: 5px;
 }
 
 #logo {
@@ -88,7 +78,6 @@ body {
 
 #content {
 	display: block;
-	background: white;
 }
 
 #menu {
@@ -101,16 +90,15 @@ body {
 	border-radius: 5px;
 }
 
-h1, h2, h3, h4, h5, h6, h7 {
+h1, h2, h3, h4, h5, h6 {
 	color: #ec008c;
-	font-family: "Edding850";
+	font-family: "Bariol Light";
+	font-weight: regular;
 	font-weight: normal;
 }
 
 #header h1 {
 	font-size: 72px;
-	margin-bottom: 0.1em;
-	margin-top: 0;
 }
 
 h2 {
