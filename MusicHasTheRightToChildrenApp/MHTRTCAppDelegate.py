@@ -4,7 +4,7 @@
 #  MusicHasTheRightToChildrenApp
 #
 #  Created by Michiel on 19/05/14.
-#  Copyright (c) 2014 __MyCompanyName__. All rights reserved.
+#  Copyright (c) 2014 Factful. All rights reserved.
 #
 
 from Foundation import *
