@@ -598,7 +598,7 @@
                     </ikImageView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="353.5" y="141"/>
+            <point key="canvasLocation" x="420.5" y="167"/>
         </window>
         <customObject id="373" userLabel="MHTRTCAppDelegate" customClass="MHTRTCAppDelegate"/>
         <customObject id="420" customClass="NSFontManager"/>
