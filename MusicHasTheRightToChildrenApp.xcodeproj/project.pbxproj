@@ -14,6 +14,10 @@
 		CC230724192A505200C189A6 /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230723192A505200C189A6 /* main.py */; };
 		CC230726192A505200C189A6 /* MHTRTCAppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */; };
 		CC230729192A505200C189A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC230727192A505200C189A6 /* MainMenu.xib */; };
+		CC32D7F119ED4E12001068FC /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC32D7F019ED4E12001068FC /* AppKit.framework */; };
+		CC32D7F319ED4E22001068FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC32D7F219ED4E22001068FC /* Foundation.framework */; };
+		CC32D7F519ED4E2B001068FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC32D7F419ED4E2B001068FC /* CoreData.framework */; };
+		CC32D7F719ED4E33001068FC /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC32D7F619ED4E33001068FC /* Quartz.framework */; };
 		CC744BB019ED4AEE0085BAEB /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = CC744BAF19ED4AEE0085BAEB /* record.png */; };
 		CCA4E8891938CAD000FD9233 /* libpython2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */; };
 /* End PBXBuildFile section */
@@ -29,6 +33,10 @@
 		CC230723192A505200C189A6 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MHTRTCAppDelegate.py; sourceTree = "<group>"; };
 		CC230728192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CC32D7F019ED4E12001068FC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = ../../../../../System/Library/Frameworks/AppKit.framework; sourceTree = "<group>"; };
+		CC32D7F219ED4E22001068FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = ../../../../../System/Library/Frameworks/Foundation.framework; sourceTree = "<group>"; };
+		CC32D7F419ED4E2B001068FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = ../../../../../System/Library/Frameworks/CoreData.framework; sourceTree = "<group>"; };
+		CC32D7F619ED4E33001068FC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = ../../../../../System/Library/Frameworks/Quartz.framework; sourceTree = "<group>"; };
 		CC744BAF19ED4AEE0085BAEB /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpython2.7.dylib; path = ../../../../../System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/libpython2.7.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,8 +46,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC32D7F119ED4E12001068FC /* AppKit.framework in Frameworks */,
 				CCA4E8891938CAD000FD9233 /* libpython2.7.dylib in Frameworks */,
+				CC32D7F519ED4E2B001068FC /* CoreData.framework in Frameworks */,
+				CC32D7F719ED4E33001068FC /* Quartz.framework in Frameworks */,
 				CC230710192A505200C189A6 /* Cocoa.framework in Frameworks */,
+				CC32D7F319ED4E22001068FC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +89,10 @@
 		CC230713192A505200C189A6 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC32D7F619ED4E33001068FC /* Quartz.framework */,
+				CC32D7F419ED4E2B001068FC /* CoreData.framework */,
+				CC32D7F219ED4E22001068FC /* Foundation.framework */,
+				CC32D7F019ED4E12001068FC /* AppKit.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
