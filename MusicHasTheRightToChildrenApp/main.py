@@ -4,10 +4,10 @@
 #  MusicHasTheRightToChildrenApp
 #
 #  Created by Michiel on 19/05/14.
-#  Copyright (c) 2014 Factful. All rights reserved.
+#  Copyright (c) 2014+ Factful. All rights reserved.
 #
 
-#import modules required by application
+# Import modules required by application.
 import objc
 import Foundation
 import AppKit

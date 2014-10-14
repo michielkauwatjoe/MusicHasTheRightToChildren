@@ -9,8 +9,14 @@
 
 from Foundation import *
 from AppKit import *
+from musichastherighttochildren.extract import Extract
 
 class MHTRTCAppDelegate(NSObject):
+    u"""
+    Application delegate called by run event loop.
+    Model should be delegated from here.
+    """
 
     def applicationDidFinishLaunching_(self, sender):
         NSLog("Application did finish launching.")
+        e = Extract()
