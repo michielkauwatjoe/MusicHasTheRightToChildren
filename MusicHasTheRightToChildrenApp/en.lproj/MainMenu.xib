@@ -516,38 +516,32 @@
         <window title="Music Has the Right to Children" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="72" y="379" width="766" height="91"/>
+            <rect key="contentRect" x="72" y="379" width="487" height="181"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="766" height="91"/>
+                <rect key="frame" x="0.0" y="-2" width="487" height="181"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="0Je-mq-wB8">
-                        <rect key="frame" x="14" y="13" width="69" height="32"/>
+                    <textField verticalHuggingPriority="750" id="gG2-pO-6Wg">
+                        <rect key="frame" x="20" y="139" width="447" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Scan" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ClM-5A-n3M">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="D5j-7C-ejo">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="gL6-sN-IZo">
+                        <rect key="frame" x="20" y="103" width="71" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Load" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2UL-bA-6t9">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <textField verticalHuggingPriority="750" id="2ef-dA-Ana">
-                        <rect key="frame" x="20" y="49" width="726" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LAY-Mv-Ozw">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <connections>
-                                <binding destination="Xhi-Vt-aTb" name="value" keyPath="values.collection" id="aGq-si-Rbz"/>
-                            </connections>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="Xhi-Vt-aTb" name="value" keyPath="values" id="89V-L1-66K"/>
-                        </connections>
-                    </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="459" y="236.5"/>
+            <point key="canvasLocation" x="221.5" y="62.5"/>
         </window>
         <customObject id="373" userLabel="MHTRTCAppDelegate" customClass="MHTRTCAppDelegate"/>
         <customObject id="420" customClass="NSFontManager"/>
