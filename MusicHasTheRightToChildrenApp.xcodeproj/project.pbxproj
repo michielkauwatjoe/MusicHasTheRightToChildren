@@ -14,15 +14,13 @@
 		CC230724192A505200C189A6 /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230723192A505200C189A6 /* main.py */; };
 		CC230726192A505200C189A6 /* MHTRTCAppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */; };
 		CC230729192A505200C189A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC230727192A505200C189A6 /* MainMenu.xib */; };
+		CC744BB019ED4AEE0085BAEB /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = CC744BAF19ED4AEE0085BAEB /* record.png */; };
 		CCA4E8891938CAD000FD9233 /* libpython2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CC23070C192A505200C189A6 /* MusicHasTheRightToChildrenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHasTheRightToChildrenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC23070F192A505200C189A6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		CC230714192A505200C189A6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		CC230715192A505200C189A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		CC230716192A505200C189A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CC230719192A505200C189A6 /* MusicHasTheRightToChildrenApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MusicHasTheRightToChildrenApp-Info.plist"; sourceTree = "<group>"; };
 		CC23071B192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CC23071D192A505200C189A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -31,6 +29,7 @@
 		CC230723192A505200C189A6 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 		CC230725192A505200C189A6 /* MHTRTCAppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = MHTRTCAppDelegate.py; sourceTree = "<group>"; };
 		CC230728192A505200C189A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CC744BAF19ED4AEE0085BAEB /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		CCA4E8881938CAD000FD9233 /* libpython2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpython2.7.dylib; path = ../../../../../System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/libpython2.7.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,9 +77,6 @@
 		CC230713192A505200C189A6 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC230714192A505200C189A6 /* AppKit.framework */,
-				CC230715192A505200C189A6 /* CoreData.framework */,
-				CC230716192A505200C189A6 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -99,6 +95,7 @@
 		CC230718192A505200C189A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC744BAF19ED4AEE0085BAEB /* record.png */,
 				CC230719192A505200C189A6 /* MusicHasTheRightToChildrenApp-Info.plist */,
 				CC23071A192A505200C189A6 /* InfoPlist.strings */,
 				CC23071D192A505200C189A6 /* main.m */,
@@ -161,6 +158,7 @@
 				CC230729192A505200C189A6 /* MainMenu.xib in Resources */,
 				CC230726192A505200C189A6 /* MHTRTCAppDelegate.py in Resources */,
 				CC23071C192A505200C189A6 /* InfoPlist.strings in Resources */,
+				CC744BB019ED4AEE0085BAEB /* record.png in Resources */,
 				CC230722192A505200C189A6 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +239,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -300,6 +299,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
