@@ -25,8 +25,14 @@
 <div id="content">
 
 <h3><em>Discogs</em></h3>
-<table id="discogs">
-<tr ng-repeat="record in records">
+
+<div ng-repeat="folder in discogs">
+
+<h4>{{folder.foldername}}</h4>
+
+
+<table class="discogs">
+<tr ng-repeat="record in folder.albums">
 
 <td>{{record.artist}}</td>
 <td width=300><em>{{record.album}}</em></td>
@@ -35,6 +41,8 @@
 <td width=400><a href="{{record.url}}">{{record.url}}</a></td>
 </tr>
 </table>
+
+</div>
 
 </div>
 
