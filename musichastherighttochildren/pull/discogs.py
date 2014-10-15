@@ -19,9 +19,9 @@ class Discogs(MHTRTCGlobals):
 
     def __init__(self):
         discogs = self.readCSV()
-        discogs_json = json.dumps(discogs)
-        print discogs_json
-
+        f = open('records.json', 'wb')
+        discogs_json = json.dump(discogs, f, indent=2)
+        f.close()
 
     def readCSV(self):
         discogs = {}
