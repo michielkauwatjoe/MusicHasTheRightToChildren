@@ -24,16 +24,21 @@ class Discogs(MHTRTCGlobals):
         f.close()
 
     def readCSV(self):
-        discogs = {}
+        u"""
+        Catalog#, Artist, Title, Label, Format, Rating, Released, release_id, CollectionFolder, Date Added, Collection Media Condition, Collection Sleeve Condition, Collection Notes
+        """
+        discogs = []
         with open('../data/al-khwarizmi-collection-20141013-1124.csv', 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
                 artist = row[1]
-                album = '%s (%s)' % (row[2], row[4])
-
-                if not artist in discogs:
-                    discogs[artist] = []
-                discogs[artist].append(album)
+                album = row[2]
+                label = row[3]
+                discformat = row[4]
+                released = row[6]
+                url = 'http://www.discogs.com/release/%s' % row[7]
+                row = {'artist': artist, 'album': album, 'label': label, 'discformat': discformat, 'released': released, 'url': url}
+                discogs.append(row)
         return discogs
 
 if __name__ == '__main__':

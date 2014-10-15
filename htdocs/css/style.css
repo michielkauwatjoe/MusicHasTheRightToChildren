@@ -11,12 +11,14 @@ a:link, a:hover, a:visited, a:active {
 
 body {
     background: url('http://data.musichastherighttochildren.com.s3.amazonaws.com/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font: 16px/22px "Bariol Regular", Arial, Helvetica, sans-serif;
+	text-shadow: 2px 2px 4px #000000;
     color: white;
     padding: 0;
     margin: 0;
 }
-
 
 #footer {
 	float: left;
@@ -29,9 +31,14 @@ body {
 }
 
 #header {
-    margin: 10px;
-	width: 100%;
+    padding: 20px;
+	width: 99%;
 }
+
+td {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    }
 
 #logo {
 	width: 800px;
@@ -41,6 +48,7 @@ body {
 
 #content {
 	display: block;
+    padding: 20px;
 }
 
 #menu {

@@ -19,15 +19,22 @@
 <div id="header">
 
 <h1><img src="http://data.musichastherighttochildren.com.s3.amazonaws.com/record.png" width="150"/>Music Has the Right to Children</h1>
+<h2><em>A music collection application</em></h2>
 </div>
 
 <div id="content">
 
-<ul>
-<li ng-repeat="record in records">
-  {{record.artist}} - <em>{{record.album}}</em>
-</li>
-</ul>
+<h3><em>Discogs</em></h3>
+<table id="discogs">
+<tr ng-repeat="record in records">
+
+<td>{{record.artist}}</td>
+<td width=300><em>{{record.album}}</em></td>
+<td width=200>{{record.label}}</td>
+<td>{{record.released}}</td>
+<td width=400><a href="{{record.url}}">{{record.url}}</a></td>
+</tr>
+</table>
 
 </div>
 
