@@ -19,6 +19,7 @@ class Discogs(MHTRTCGlobals):
 
     def __init__(self):
         discogs = self.readCSV()
+        discogs = sorted(discogs, key=lambda k: k['artist'])
         f = open('records.json', 'wb')
         discogs_json = json.dump(discogs, f, indent=2)
         f.close()

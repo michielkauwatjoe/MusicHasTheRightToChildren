@@ -23,21 +23,23 @@ body {
 #footer {
 	float: left;
 	background: -moz-linear-gradient(center top , #373737, #212121) repeat scroll 0 0 transparent;
-	width: 100%;
+	width: 90%;
 	height: 3em;
-	margin: 0;
+	margin: 1em;
+    border-radius: 1em;
 	padding-top: 1em;
 	text-align:center;
 }
 
 #header {
     padding: 20px;
-	width: 99%;
+	width: 90%;
 }
 
 td {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+    padding: 0.2em;
     }
 
 #logo {
