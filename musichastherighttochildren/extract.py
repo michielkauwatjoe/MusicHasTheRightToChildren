@@ -4,8 +4,8 @@
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 from mhtrtcglobals import MHTRTCGlobals
-from pull.albums import Albums
-from pull.tracks import Tracks
+from retrieval.albums import Albums
+from retrieval.tracks import Tracks
 from musichastherighttochildren.aux.shell import Shell
 
 class Extract(MHTRTCGlobals):

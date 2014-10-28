@@ -4,8 +4,8 @@
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 from mhtrtcglobals import MHTRTCGlobals
-from pull.albums import Albums
-from pull.itunes import iTunes
+from retrieval.albums import Albums
+from retrieval.itunes import iTunes
 from aux.shell import Shell
 from settings.settings import Settings
 
