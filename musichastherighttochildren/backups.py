@@ -5,7 +5,6 @@
 
 from mhtrtcglobals import MHTRTCGlobals
 from pull.albums import Albums
-from pull.tracks import Tracks
 from pull.itunes import iTunes
 from aux.shell import Shell
 from settings.settings import Settings
@@ -18,25 +17,16 @@ class Backups(MHTRTCGlobals):
         # TODO: move init to super, remove Globals from base name.
         self.settings = Settings()
         Shell.initColorama()
-        self.albums = Albums(self.settings.BACKUP)
+        itunes = iTunes(self.settings.BACKUP_LIBRARY)
+        collection = Albums(self.settings.BACKUP, verbose=True)
 
-        '''
-        i = 0
-
-        for path in sorted(self.albums.asPaths()):
-            if i > self.MAX:
-                break
-            i += 1
-            tracks = Tracks(path)
-        '''
+        for artist, albums in collection.asDict().items():
+            if artist not in itunes.asDict():
+                print 'Missing artist %s' % artist
+            else:
+                for album in albums:
+                    if album not in itunes.asDict()[artist]:
+                        print 'Missing album %s for artist %s' % (album, artist)
 
 if __name__ == '__main__':
     b = Backups()
-
-    # Testing.
-    '''
-    for artist, albums in e.albums.asDict().items():
-        Shell.printArtist(artist)
-    for a in sorted(e.albums.asPaths()):
-        print a
-    '''

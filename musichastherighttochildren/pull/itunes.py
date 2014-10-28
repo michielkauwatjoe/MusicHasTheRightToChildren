@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
+#!/usr/bin/env python # -*- coding: utf-8 -*- #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 import sys
@@ -17,11 +15,17 @@ class iTunes(MHTRTCGlobals):
     PyObjc solution for access to the iTunes library.
     """
 
-    def __init__(self):
+    def __init__(self, library_file):
         self.settings = Settings()
         colorinit(autoreset=True)
+        self.titleindex = {}
+        self.db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(library_file)
+        self.scan(library_file)
 
-    def scan(self, library_file=None, checkfiles=False, checkxml=False, verbose=False):
+    def asDict(self):
+        return self.titleindex
+
+    def scan(self, library_file, checkfiles=False, checkxml=False, verbose=False):
         u"""
         Loads iTunes library.
         Database keys:
@@ -37,10 +41,7 @@ class iTunes(MHTRTCGlobals):
         "Application Version",
         "Music Folder"
         """
-        libfile = library_file or self.LIBRARY
-        self.db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(libfile)
         self.tracks = self.db['Tracks'] # objective-c class __NSCFDictionary
-        self.titleindex = {}
         self.buildTitleIndex()
 
         if verbose is True:
@@ -174,7 +175,6 @@ class iTunes(MHTRTCGlobals):
                 print "Don't know how to check", nsurl
 
 if __name__ == '__main__':
-    itunes = iTunes()
-    #itunes.scan()
     settings = Settings()
-    itunes.scan(settings.BACKUP_LIBRARY)
+    itunes = iTunes(settings.BACKUP_LIBRARY)
+    #itunes.scan()
