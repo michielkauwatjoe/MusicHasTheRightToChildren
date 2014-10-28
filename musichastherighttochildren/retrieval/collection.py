@@ -9,7 +9,7 @@ from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.settings.settings import Settings
 
-class Albums(MHTRTCGlobals):
+class Collection(MHTRTCGlobals):
     u"""
     Collects all album titles and stores them under the (sort) artist name.
     Optionally compares folder structure of iTunes collection to backup repository.
@@ -100,5 +100,5 @@ class Albums(MHTRTCGlobals):
 
 if __name__ == '__main__':
     settings = Settings()
-    albums = Albums(settings.COLLECTION, check=True, verbose=True)
+    Collection(settings.COLLECTION, check=True, verbose=True)
 

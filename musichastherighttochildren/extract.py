@@ -4,9 +4,10 @@
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 from mhtrtcglobals import MHTRTCGlobals
-from retrieval.albums import Albums
+from retrieval.collection import Collection
 from retrieval.tracks import Tracks
 from musichastherighttochildren.aux.shell import Shell
+from settings.settings import Settings
 
 class Extract(MHTRTCGlobals):
 
@@ -14,10 +15,11 @@ class Extract(MHTRTCGlobals):
 
     def __init__(self):
         Shell.initColorama()
-        self.albums = Albums()
+        settings = Settings()
+        self.collection = Collection(settings.COLLECTION)
         i = 0
 
-        for path in sorted(self.albums.asPaths()):
+        for path in sorted(self.collection.asPaths()):
             if i > self.MAX:
                 break
             i += 1

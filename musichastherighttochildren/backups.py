@@ -4,7 +4,7 @@
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 from mhtrtcglobals import MHTRTCGlobals
-from retrieval.albums import Albums
+from retrieval.collection import Collection
 from retrieval.itunes import iTunes
 from aux.shell import Shell
 from settings.settings import Settings
@@ -18,7 +18,7 @@ class Backups(MHTRTCGlobals):
         self.settings = Settings()
         Shell.initColorama()
         itunes = iTunes(self.settings.BACKUP_LIBRARY)
-        collection = Albums(self.settings.BACKUP, verbose=True)
+        collection = Collection(self.settings.BACKUP, verbose=True)
 
         for artist, albums in collection.asDict().items():
             if artist not in itunes.asDict():

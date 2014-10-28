@@ -8,6 +8,7 @@ from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
 from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.formats.mp3 import EmPeeThree
 from musichastherighttochildren.formats.m4a import EmFourAy
+from musichastherighttochildren.settings.settings import Settings
 
 class Tracks(MHTRTCGlobals):
     u"""
@@ -15,7 +16,8 @@ class Tracks(MHTRTCGlobals):
     """
 
     def __init__(self, root, verbose=True):
-        self.root = self.COLLECTION + root
+        settings = Settings()
+        self.root = settings.COLLECTION + root
         self.verbose = verbose
         self.tracks = {}
         self.tracks['root'] = root

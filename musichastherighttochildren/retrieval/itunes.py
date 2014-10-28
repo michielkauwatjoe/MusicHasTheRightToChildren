@@ -176,5 +176,5 @@ class iTunes(MHTRTCGlobals):
 
 if __name__ == '__main__':
     settings = Settings()
+    itunes = iTunes(settings.LIBRARY)
     itunes = iTunes(settings.BACKUP_LIBRARY)
-    #itunes.scan()
