@@ -2,14 +2,15 @@
  *
  */
 
+@import url('http://bucket.gomiyama.com.s3.amazonaws.com/fonts/bariol/style.css');
+@import url('http://bucket.factful-planet.com.s3.amazonaws.com/fonts/octicons/style.css');
+
 a:link, a:hover, a:visited, a:active {
 	text-decoration: none;
 	color: #ec008c;
 }
 
-@import url('http://bucket.gomiyama.com.s3.amazonaws.com/fonts/bariol/style.css');
-
-body {
+html, body {
     background: url('http://data.musichastherighttochildren.com.s3.amazonaws.com/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -18,6 +19,11 @@ body {
     color: white;
     padding: 0;
     margin: 0;
+}
+
+.octoface:before {
+	font-family: 'Octicons';
+	content: "\f008";
 }
 
 #footer {
