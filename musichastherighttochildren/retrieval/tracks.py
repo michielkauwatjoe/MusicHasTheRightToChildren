@@ -4,13 +4,13 @@
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
 from os import listdir
-from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+from musichastherighttochildren.mhtrtc import MHTRTC
 from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.formats.mp3 import EmPeeThree
 from musichastherighttochildren.formats.m4a import EmFourAy
 from musichastherighttochildren.settings.settings import Settings
 
-class Tracks(MHTRTCGlobals):
+class Tracks(MHTRTC):
     u"""
     Scans music files located at a path, generally consisting a single album.
     """

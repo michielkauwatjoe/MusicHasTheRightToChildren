@@ -3,9 +3,9 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-from mhtrtcglobals import MHTRTCGlobals
+from mhtrtc import MHTRTC
 
-class Visualize(Globals):
+class Visualize(MHTRTC):
     u"""
     Visualizes the music collection based on the metadata stored in the database.
     TODO: Use FF Chartwell as a font for stats & infographics.

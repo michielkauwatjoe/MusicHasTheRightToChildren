@@ -3,13 +3,13 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-from mhtrtcglobals import MHTRTCGlobals
+from mhtrtc import MHTRTC
 from retrieval.collection import Collection
 from retrieval.itunes import iTunes
 from aux.shell import Shell
 from settings.settings import Settings
 
-class Backups(MHTRTCGlobals):
+class Backups(MHTRTC):
 
     MAX = 8
 

@@ -3,8 +3,15 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-class MHTRTCGlobals(object):
+from musichastherighttochildren.aux.shell import Shell
+from settings.settings import Settings
+
+class MHTRTC(object):
     EXTENSION_MP3 = 'mp3'
     EXTENSION_M4A = 'm4a'
     EXTENSIONS = [EXTENSION_MP3, EXTENSION_M4A]
     SDB_DOMAIN_NAME = 'musichastherighttochildren'
+
+    def __init__(self):
+        Shell.initColorama()
+        self.settings = Settings()

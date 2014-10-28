@@ -3,20 +3,17 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-from mhtrtcglobals import MHTRTCGlobals
+from mhtrtc import MHTRTC
 from retrieval.collection import Collection
 from retrieval.tracks import Tracks
-from musichastherighttochildren.aux.shell import Shell
-from settings.settings import Settings
 
-class Extract(MHTRTCGlobals):
+class Extract(MHTRTC):
 
     MAX = 8
 
     def __init__(self):
-        Shell.initColorama()
-        settings = Settings()
-        self.collection = Collection(settings.COLLECTION)
+        super(Extract, self).__init__()
+        self.collection = Collection(self.settings.COLLECTION)
         i = 0
 
         for path in sorted(self.collection.asPaths()):
