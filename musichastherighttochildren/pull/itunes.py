@@ -10,6 +10,7 @@ from colorama import init as colorinit
 
 from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+from musichastherighttochildren.settings.settings import Settings
 
 class iTunes(MHTRTCGlobals):
     u"""
@@ -17,9 +18,10 @@ class iTunes(MHTRTCGlobals):
     """
 
     def __init__(self):
+        self.settings = Settings()
         colorinit(autoreset=True)
 
-    def scan(self, library_file=None):
+    def scan(self, library_file=None, checkfiles=False, checkxml=False, verbose=False):
         u"""
         Loads iTunes library.
         Database keys:
@@ -40,7 +42,17 @@ class iTunes(MHTRTCGlobals):
         self.tracks = self.db['Tracks'] # objective-c class __NSCFDictionary
         self.titleindex = {}
         self.buildTitleIndex()
-        self.checkFilesExist()
+
+        if verbose is True:
+            self.printVerbose()
+
+        print sorted(self.titleindex.keys())
+
+        if checkfiles:
+            self.checkFilesExist()
+
+        if checkxml:
+            self.checkXML()
 
     def buildTitleIndex(self):
         """
@@ -91,7 +103,13 @@ class iTunes(MHTRTCGlobals):
                 print 'Unknown artist for track ID %d' % tid
                 continue
 
-            album = track['Album']
+            try:
+                album = track['Album']
+            except Exception, e:
+                print track['Location']
+                print track['Kind']
+                continue
+
             title = track['Name']
 
             if 'Track Number' in track:
@@ -120,8 +138,6 @@ class iTunes(MHTRTCGlobals):
                 self.titleindex[albumartist][album][disc][nr] = {'title': title, 'tid': tid}
             else:
                 self.titleindex[albumartist][album][disc][nr] = {'title': title, 'tid': tid, 'artist': artist}
-
-        self.printVerbose()
 
     def printVerbose(self):
         u"""
@@ -159,4 +175,6 @@ class iTunes(MHTRTCGlobals):
 
 if __name__ == '__main__':
     itunes = iTunes()
-    itunes.scan()
+    #itunes.scan()
+    settings = Settings()
+    itunes.scan(settings.BACKUP_LIBRARY)

@@ -8,7 +8,8 @@ class Settings():
     # Local.
     COLLECTION = '/Users/<username>/Music/iTunes/iTunes Media/Music/'
     BACKUP = '/Volumes/Family/Music/'
-    LIBRARY = '/Users/michiel/Music/iTunes/iTunes Library.xml'
+    LIBRARY = '/Users/<username>/Music/iTunes/iTunes Library.xml'
+    BACKUP_LIBRARY = '/Volumes/Family/iTunes/iTunes Music Library.xml'
 
     # Last FM.
     HAS_LASTFM = True
