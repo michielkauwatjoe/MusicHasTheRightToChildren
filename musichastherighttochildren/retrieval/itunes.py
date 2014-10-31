@@ -7,10 +7,10 @@ import Foundation
 from colorama import init as colorinit
 
 from musichastherighttochildren.aux.shell import Shell
-from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
+from musichastherighttochildren.mhtrtc import MHTRTC
 from musichastherighttochildren.settings.settings import Settings
 
-class iTunes(MHTRTCGlobals):
+class iTunes(MHTRTC):
     u"""
     PyObjc solution for access to the iTunes library.
     """
@@ -91,13 +91,13 @@ class iTunes(MHTRTCGlobals):
             artist = None
 
             if 'Artist' in track:
-                artist = track['Artist']
+                artist = track['Artist'].encode('utf-8')
 
             if 'Compilation' in track and track['Compilation'] == 1:
                 albumartist = 'Compilation'
                 compilation = True
             elif 'Album Artist' in track:
-                albumartist = track['Album Artist']
+                albumartist = track['Album Artist'].encode('utf-8')
             elif artist:
                 albumartist = artist
             else:
@@ -105,13 +105,13 @@ class iTunes(MHTRTCGlobals):
                 continue
 
             try:
-                album = track['Album']
+                album = track['Album'].encode('utf-8')
             except Exception, e:
                 print track['Location']
                 print track['Kind']
                 continue
 
-            title = track['Name']
+            title = track['Name'].encode('utf-8')
 
             if 'Track Number' in track:
                 nr = track['Track Number']
