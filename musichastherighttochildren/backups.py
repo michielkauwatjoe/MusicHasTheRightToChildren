@@ -21,6 +21,7 @@ class Backups(MHTRTC):
         """
         super(Backups, self).__init__()
         itunes = self.getITunes()
+        print itunes
         #itunes = iTunes(self.settings.BACKUP_LIBRARY)
         #collection = Collection(self.settings.BACKUP, verbose=True)
 
@@ -38,11 +39,8 @@ class Backups(MHTRTC):
             itunes = iTunes(self.settings.BACKUP_LIBRARY)
             self.writeJSON(self.ITUNES_JSON, itunes.asDict())
         else:
-            print 'blbabla'
-
-    def writeJSON(self, path, data):
-        with open(path, 'w') as outfile:
-            json.dump(data, outfile, sort_keys=True, indent=4, ensure_ascii=False)
+            itunes = self.readJSON(self.ITUNES_JSON)
+        return itunes
 
 if __name__ == '__main__':
     b = Backups()
