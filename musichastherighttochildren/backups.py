@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
-import os
+import os, difflib
 
 from mhtrtc import MHTRTC
 from retrieval.collection import Collection
@@ -35,10 +35,16 @@ class Backups(MHTRTC):
     def compareArtists(self, artist, artists):
         if artist in artists:
             return artist
-        else:
-            artist = artist.replace('_', '/')
-            if artist in artists:
-                return artist
+
+        artist = artist.replace('_', '/')
+        if artist in artists:
+            return artist
+
+        matches = difflib.get_close_matches(artist, artists)
+        if len(matches) >= 1:
+            #print 'Found match(es) for artist %s:' % artist, ', '.join(matches)
+            artist = matches[0]
+            return artist
 
         print 'Missing artist %s' % artist
 
@@ -48,9 +54,16 @@ class Backups(MHTRTC):
         for album in albums1:
             if album in albums2:
                 found = True
-            else:
+
+            if not found:
                 slash_album = album.replace('_', '/')
                 if slash_album in albums2:
+                    found = True
+
+            if not found:
+                matches = difflib.get_close_matches(album, albums2)
+                if len(matches) > 0:
+                    print 'Found match(es) for %s:' % album, ', '.join(matches)
                     found = True
 
         if not found:
