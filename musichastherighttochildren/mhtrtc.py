@@ -3,6 +3,8 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
+import json
+
 from musichastherighttochildren.aux.shell import Shell
 from settings.settings import Settings
 
