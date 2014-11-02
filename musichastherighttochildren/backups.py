@@ -46,7 +46,7 @@ class Backups(MHTRTC):
             artist = matches[0]
             return artist
 
-        print 'Missing artist %s' % artist
+        Shell.printArtist('Missing artist %s' % artist)
 
     def compareAlbums(self, artist, albums1, albums2):
         found = False
@@ -63,11 +63,11 @@ class Backups(MHTRTC):
             if not found:
                 matches = difflib.get_close_matches(album, albums2)
                 if len(matches) > 0:
-                    print 'Found match(es) for %s:' % album, ', '.join(matches)
+                    #print 'Found match(es) for %s:' % album, ', '.join(matches)
                     found = True
 
         if not found:
-            print 'Missing album %s for artist %s' % (album, artist)
+            Shell.printAlbum('Missing album %s for artist %s' % (album, artist))
 
     def getCollection(self):
         if not os.path.exists(self.COLLECTION_JSON):
@@ -80,6 +80,7 @@ class Backups(MHTRTC):
 
     def getITunes(self):
         if not os.path.exists(self.ITUNES_JSON):
+            print 'Retrieving iTunes library.'
             itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
             self.writeJSON(self.ITUNES_JSON, itunes)
         else:

@@ -104,6 +104,7 @@ class iTunes(MHTRTC):
                 print 'Unknown artist for track ID %d' % tid
                 continue
 
+
             try:
                 album = track['Album'].encode('utf-8')
             except Exception, e:
