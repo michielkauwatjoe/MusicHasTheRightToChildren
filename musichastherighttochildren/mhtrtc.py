@@ -19,6 +19,7 @@ class MHTRTC(object):
 
     ITUNES_JSON = 'data/itunes.json'
     COLLECTION_JSON = 'data/collection.json'
+    DISCOGS_JSON = 'data/discogs.json'
 
     def __init__(self):
         u"""
@@ -58,5 +59,15 @@ class MHTRTC(object):
             self.writeJSON(self.ITUNES_JSON, itunes)
         else:
             itunes = self.readJSON(self.ITUNES_JSON)
+        print 'Finished loading %s' % self.ITUNES_JSON
+        return itunes
+
+    def getDiscogs(self, force=False):
+        if not os.path.exists(self.DISCOGS_JSON) or force:
+            print 'Retrieving Discogs collection.'
+            discogs = Discogs().asDict()
+            self.writeJSON(self.DISCOGS_JSON, itunes)
+        else:
+            itunes = self.readJSON(self.DISCOGS_JSON)
         print 'Finished loading %s' % self.ITUNES_JSON
         return itunes

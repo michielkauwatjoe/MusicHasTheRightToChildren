@@ -8,7 +8,6 @@ from mhtrtc import MHTRTC
 from retrieval.collection import Collection
 from retrieval.itunes import iTunes
 from aux.shell import Shell
-from settings.settings import Settings
 
 class Compare(MHTRTC):
 
@@ -78,4 +77,4 @@ class Compare(MHTRTC):
             Shell.printAlbum('Missing album %s for artist %s' % (album, artist))
 
 if __name__ == '__main__':
-    b = Compare()
+    Compare()

@@ -17,24 +17,33 @@ class Discogs(MHTRTCGlobals):
     https://github.com/jesseward/discogs-oauth-example/blob/master/discogs_example.py
     """
 
-    def __init__(self):
-        folders = self.readCSV()
-        discogs = []
+    def __init__(self, fromcsv=True):
+        if fromcsv:
+            # TODO: pass CSV path.
+            folders = self.readCSV()
+            self.discogs = []
 
-        for foldername, albums in folders.items():
-            dictionary = {'foldername': foldername}
-            albums = sorted(albums, key=lambda k: k['album'])
-            albums = sorted(albums, key=lambda k: k['artist'])
-            dictionary['albums'] = albums
-            discogs.append(dictionary)
+            for foldername, albums in folders.items():
+                dictionary = {'foldername': foldername}
+                albums = sorted(albums, key=lambda k: k['album'])
+                albums = sorted(albums, key=lambda k: k['artist'])
+                dictionary['albums'] = albums
+                self.discogs.append(dictionary)
 
-        discogs = sorted(discogs, key=lambda k: k['foldername'])
+            self.discogs = sorted(self.discogs, key=lambda k: k['foldername'])
 
-        f = open('discogs.json', 'wb')
-        discogs_json = json.dump(discogs, f, indent=2)
-        f.close()
+            # TODO: move JSON IO to encapsulating object.
+            f = open('discogs.json', 'wb')
+            discogs_json = json.dump(self.discogs, f, indent=2)
+            f.close()
+        else:
+            #TODO: connect to account via API.
+            pass
 
-    def readCSV(self):
+    def asDict(self):
+        return self.discogs
+
+    def readCSV(self, path=None):
         u"""
         Catalog#, Artist, Title, Label, Format, Rating, Released, release_id, CollectionFolder, Date Added, Collection Media Condition, Collection Sleeve Condition, Collection Notes
         Group rows by folder.

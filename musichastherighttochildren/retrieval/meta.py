@@ -10,7 +10,7 @@ import musicbrainz2.webservice as ws
 #import pyechonest
 
 from musichastherighttochildren.mhtrtcglobals import MHTRTCGlobals
-from musichastherighttochildren.database.simpledb import SimpleDB
+from musichastherighttochildren.cloud.simpledb import SimpleDB
 from musichastherighttochildren.formats.mp3 import EmPeeThree
 from musichastherighttochildren.formats.m4a import EmFourAy
 
