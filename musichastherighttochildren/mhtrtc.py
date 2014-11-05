@@ -3,7 +3,7 @@
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
 
-import json
+import json, os
 
 from musichastherighttochildren.aux.shell import Shell
 from settings.settings import Settings
@@ -16,6 +16,9 @@ class MHTRTC(object):
     EXTENSION_M4A = 'm4a'
     EXTENSIONS = [EXTENSION_MP3, EXTENSION_M4A]
     SDB_DOMAIN_NAME = 'musichastherighttochildren'
+
+    ITUNES_JSON = 'data/itunes.json'
+    COLLECTION_JSON = 'data/collection.json'
 
     def __init__(self):
         u"""
@@ -39,3 +42,21 @@ class MHTRTC(object):
             d = json.load(file)
             return d
 
+    def getCollection(self, force=False):
+        if not os.path.exists(self.COLLECTION_JSON) or force:
+            collection = Collection(self.settings.BACKUP, verbose=True).asDict()
+            self.writeJSON(self.COLLECTION_JSON, collection)
+        else:
+            collection = self.readJSON(self.COLLECTION_JSON)
+        print 'Finished loading %s' % self.COLLECTION_JSON
+        return collection
+
+    def getITunes(self, force=False):
+        if not os.path.exists(self.ITUNES_JSON) or force:
+            print 'Retrieving iTunes library.'
+            itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
+            self.writeJSON(self.ITUNES_JSON, itunes)
+        else:
+            itunes = self.readJSON(self.ITUNES_JSON)
+        print 'Finished loading %s' % self.ITUNES_JSON
+        return itunes

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # https://github.com/michielkauwatjoe/MusicHasTheRightToChildren
-import os, difflib
+import difflib
 
 from mhtrtc import MHTRTC
 from retrieval.collection import Collection
@@ -13,8 +13,6 @@ from settings.settings import Settings
 class Compare(MHTRTC):
 
     MAX = 8
-    ITUNES_JSON = 'data/itunes.json'
-    COLLECTION_JSON = 'data/collection.json'
 
     def __init__(self, verbose=False, log=True):
         u"""
@@ -78,25 +76,6 @@ class Compare(MHTRTC):
 
         if not found:
             Shell.printAlbum('Missing album %s for artist %s' % (album, artist))
-
-    def getCollection(self):
-        if not os.path.exists(self.COLLECTION_JSON):
-            collection = Collection(self.settings.BACKUP, verbose=True).asDict()
-            self.writeJSON(self.COLLECTION_JSON, collection)
-        else:
-            collection = self.readJSON(self.COLLECTION_JSON)
-        print 'Finished loading %s' % self.COLLECTION_JSON
-        return collection
-
-    def getITunes(self):
-        if not os.path.exists(self.ITUNES_JSON):
-            print 'Retrieving iTunes library.'
-            itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
-            self.writeJSON(self.ITUNES_JSON, itunes)
-        else:
-            itunes = self.readJSON(self.ITUNES_JSON)
-        print 'Finished loading %s' % self.ITUNES_JSON
-        return itunes
 
 if __name__ == '__main__':
     b = Compare()
