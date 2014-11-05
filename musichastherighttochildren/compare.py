@@ -16,10 +16,11 @@ class Compare(MHTRTC):
     ITUNES_JSON = 'data/itunes.json'
     COLLECTION_JSON = 'data/collection.json'
 
-    def __init__(self):
+    def __init__(self, verbose=False, log=True):
         u"""
         """
         super(Compare, self).__init__()
+        self.verbose = verbose
         itunes = self.getITunes()
         collection = self.getCollection()
         self.compareCollection(collection, itunes)
@@ -30,7 +31,15 @@ class Compare(MHTRTC):
 
             if not artist is None:
                 albums2 = itunes[artist]
+                if self.verbose:
+                    self.printCompare(artist, albums1, albums2)
                 self.compareAlbums(artist, albums1, albums2)
+                self.compareAlbums(artist, albums2, albums1)
+
+    def printCompare(self, artist, albums1, albums2):
+        print artist
+        print sorted(albums1)
+        print sorted(albums2.keys())
 
     def compareArtists(self, artist, artists):
         if artist in artists:
@@ -41,6 +50,7 @@ class Compare(MHTRTC):
             return artist
 
         matches = difflib.get_close_matches(artist, artists)
+
         if len(matches) >= 1:
             #print 'Found match(es) for artist %s:' % artist, ', '.join(matches)
             artist = matches[0]
