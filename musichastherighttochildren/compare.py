@@ -10,7 +10,7 @@ from retrieval.itunes import iTunes
 from aux.shell import Shell
 from settings.settings import Settings
 
-class Backups(MHTRTC):
+class Compare(MHTRTC):
 
     MAX = 8
     ITUNES_JSON = 'data/itunes.json'
@@ -19,7 +19,7 @@ class Backups(MHTRTC):
     def __init__(self):
         u"""
         """
-        super(Backups, self).__init__()
+        super(Compare, self).__init__()
         itunes = self.getITunes()
         collection = self.getCollection()
         self.compareCollection(collection, itunes)
@@ -89,4 +89,4 @@ class Backups(MHTRTC):
         return itunes
 
 if __name__ == '__main__':
-    b = Backups()
+    b = Compare()
