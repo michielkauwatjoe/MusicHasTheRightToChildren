@@ -5,8 +5,6 @@
 import difflib
 
 from mhtrtc import MHTRTC
-from retrieval.collection import Collection
-from retrieval.itunes import iTunes
 from aux.shell import Shell
 
 class Compare(MHTRTC):

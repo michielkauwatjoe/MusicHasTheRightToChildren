@@ -7,6 +7,8 @@ import json, os
 
 from musichastherighttochildren.aux.shell import Shell
 from settings.settings import Settings
+from retrieval.itunes import iTunes
+from retrieval.collection import Collection
 
 class MHTRTC(object):
     u"""
