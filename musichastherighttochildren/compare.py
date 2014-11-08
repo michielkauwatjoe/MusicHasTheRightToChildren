@@ -34,7 +34,6 @@ class Compare(MHTRTC):
                 self.compareAlbums(artist, albums2, albums1)
 
     def printCompare(self, artist, albums1, albums2):
-        print artist
         print sorted(albums1)
         print sorted(albums2.keys())
 
@@ -46,10 +45,10 @@ class Compare(MHTRTC):
         if artist in artists:
             return artist
 
-        matches = difflib.get_close_matches(artist, artists)
+        matches = difflib.get_close_matches(artist, artists, 3, 0.75)
 
         if len(matches) >= 1:
-            #print 'Found match(es) for artist %s:' % artist, ', '.join(matches)
+            Shell.printArtist('Found match(es) for artist %s: %s' % (artist, (', '.join(matches))))
             artist = matches[0]
             return artist
 
