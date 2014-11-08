@@ -46,7 +46,7 @@ class Compare(MHTRTC):
         matches = difflib.get_close_matches(artist, artists, 3, 0.75)
 
         if len(matches) >= 1:
-            Shell.printArtist('Found match(es) for artist %s: %s' % (artist, (', '.join(matches))))
+            Shell.printArtist(u'Found match(es) for artist %s: %s' % (artist, (', '.join(matches))))
             artist = matches[0]
             return artist
 

@@ -7,17 +7,15 @@ import Foundation
 from colorama import init as colorinit
 
 from musichastherighttochildren.aux.shell import Shell
-from musichastherighttochildren.mhtrtc import MHTRTC
 from musichastherighttochildren.settings.settings import Settings
 
-class iTunes(MHTRTC):
+class iTunes(object):
     u"""
     PyObjc solution for access to the iTunes library.
     """
 
-    def __init__(self, library_file):
-        self.settings = Settings()
-        colorinit(autoreset=True)
+    def __init__(self, parent, library_file):
+        self.parent = parent
         self.titleindex = {}
         self.db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(library_file)
         self.scan(library_file)

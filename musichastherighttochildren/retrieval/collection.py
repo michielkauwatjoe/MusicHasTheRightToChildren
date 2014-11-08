@@ -5,16 +5,15 @@
 
 import os
 from colorama import init as colorinit
-from musichastherighttochildren.mhtrtc import MHTRTC
 from musichastherighttochildren.aux.shell import Shell
 from musichastherighttochildren.settings.settings import Settings
 
-class Collection(MHTRTC):
+class Collection(object):
     u"""
     Collects all album titles and stores them under the (sort) artist name.
     Optionally compares folder structure of iTunes collection to backup repository.
     """
-    def __init__(self, root, check=False, verbose=False):
+    def __init__(self, parent, root, check=False, verbose=False):
         u"""
         """
         self.root = root
