@@ -47,7 +47,7 @@ class MHTRTC(object):
 
     def getCollection(self, force=False):
         if not os.path.exists(self.COLLECTION_JSON) or force:
-            collection = Collection(self, self.settings.BACKUP, verbose=True).asDict()
+            collection = Collection(self.settings.BACKUP, verbose=True).asDict()
             self.writeJSON(self.COLLECTION_JSON, collection)
         else:
             collection = self.readJSON(self.COLLECTION_JSON)
@@ -57,7 +57,7 @@ class MHTRTC(object):
     def getITunes(self, force=False):
         if not os.path.exists(self.ITUNES_JSON) or force:
             print 'Retrieving iTunes library.'
-            itunes = iTunes(self, self.settings.BACKUP_LIBRARY).asDict()
+            itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
             self.writeJSON(self.ITUNES_JSON, itunes)
         else:
             itunes = self.readJSON(self.ITUNES_JSON)

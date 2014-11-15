@@ -14,8 +14,7 @@ class iTunes(object):
     PyObjc solution for access to the iTunes library.
     """
 
-    def __init__(self, parent, library_file):
-        self.parent = parent
+    def __init__(self, library_file):
         self.titleindex = {}
         self.db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(library_file)
         self.scan(library_file)
