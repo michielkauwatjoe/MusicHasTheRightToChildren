@@ -71,5 +71,6 @@ class MHTRTC(object):
             self.writeJSON(self.DISCOGS_JSON, itunes)
         else:
             itunes = self.readJSON(self.DISCOGS_JSON)
+
         print 'Finished loading %s' % self.ITUNES_JSON
         return itunes

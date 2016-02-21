@@ -8,6 +8,9 @@ from mhtrtc import MHTRTC
 from aux.shell import Shell
 
 class Compare(MHTRTC):
+    u"""
+    Compares local iTunes library to remote network library.
+    """
 
     MAX = 8
 
@@ -26,8 +29,10 @@ class Compare(MHTRTC):
 
             if not artist is None:
                 albums2 = itunes[artist]
+
                 if self.verbose:
                     self.printCompare(artist, albums1, albums2)
+
                 self.compareAlbums(artist, albums1, albums2)
                 self.compareAlbums(artist, albums2, albums1)
 
@@ -36,6 +41,8 @@ class Compare(MHTRTC):
         print sorted(albums2.keys())
 
     def compareArtists(self, artist, artists):
+        u"""
+        """
         if artist in artists:
             return artist
 
@@ -53,6 +60,9 @@ class Compare(MHTRTC):
         Shell.printArtist('Missing artist %s' % artist)
 
     def compareAlbums(self, artist, albums1, albums2):
+        u"""
+        TODO: also check album artist.
+        """
         found = False
 
         for album in albums1:

@@ -17,6 +17,8 @@ class iTunes(object):
     def __init__(self, library_file):
         self.titleindex = {}
         self.db = Foundation.NSDictionary.dictionaryWithContentsOfFile_(library_file)
+        if self.db is None:
+            print 'no library file at %s' % library_file
         self.scan(library_file)
 
     def asDict(self):
@@ -44,7 +46,7 @@ class iTunes(object):
         if verbose is True:
             self.printVerbose()
 
-        print sorted(self.titleindex.keys())
+        #print sorted(self.titleindex.keys())
 
         if checkfiles:
             self.checkFilesExist()
@@ -114,7 +116,7 @@ class iTunes(object):
             if 'Track Number' in track:
                 nr = track['Track Number']
             else:
-                print 'Unknown number for track %d (ID), %s' % (tid, title)
+                #print 'Unknown number for track %d (ID), %s' % (tid, title)
                 continue
 
             if 'Disc Number' in track:
