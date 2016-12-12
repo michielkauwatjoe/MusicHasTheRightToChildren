@@ -10,8 +10,10 @@ from musichastherighttochildren.settings.settings import Settings
 
 class Collection(object):
     u"""
-    Collects all album titles and stores them under the (sort) artist name.
+    File-based collection representation. Collects all album titles and stores
+    them under the (sort) artist name. Assumes Root - Artist - Album structure.
     """
+
     def __init__(self, root, check=False, verbose=False):
         u"""
         """
@@ -53,7 +55,11 @@ class Collection(object):
         count = 0
         total_count = 0
 
-        for artist, albums, _ in os.walk(path):
+        for artist in os.listdir(path):
+            albums = []
+
+            if artist.startswith('.'):
+                continue
 
             # Feedback while scanning, could be a lot of folders.
             if count > max_count:
@@ -61,17 +67,13 @@ class Collection(object):
                 total_count += max_count
                 count = 0
 
-            if artist == self.root:
-                # Skips base folder.
-                continue
+            for album in os.listdir(path + '/' + artist):
+                albums.append(album)
 
             if len(albums) > 0:
-                self.collection[self.stripArtist(artist)] = albums
+                self.collection[artist] = albums
 
             count += 1
-
-    def stripArtist(self, artist):
-        return artist.replace(self.root, '')
 
     def load(self):
         self.walk(self.root)
