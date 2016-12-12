@@ -23,6 +23,7 @@ class MHTRTC(object):
 
     # Place where collection data is buffered for faster comparison.
     ITUNES_JSON = 'data/itunes.json'
+    LOCALITUNES_JSON = 'data/localitunes.json'
     COLLECTION_JSON = 'data/collection.json'
     DISCOGS_JSON = 'data/discogs.json'
 
@@ -33,8 +34,9 @@ class MHTRTC(object):
         Shell.initColorama()
         self.settings = Settings()
         itunesCollection = self.getITunes(pathXML=self.settings.BACKUP_LIBRARY, pathJSON=self.ITUNES_JSON)
-        filesCollection = self.getCollection(pathFiles=self.settings.BACKUP, pathJSON=self.COLLECTION_JSON)
-        self.compareCollection(filesCollection, itunesCollection)
+        localItunesCollection = self.getITunes(pathXML=self.settings.LOCAL_LIBRARY, pathJSON=self.LOCALITUNES_JSON, force=True)
+        #filesCollection = self.getCollection(pathFiles=self.settings.BACKUP, pathJSON=self.COLLECTION_JSON)
+        self.compareCollection(localItunesCollection, itunesCollection)
 
     def writeJSON(self, path, data):
         u"""
@@ -73,7 +75,7 @@ class MHTRTC(object):
         if not os.path.exists(pathJSON) or force:
             print 'Retrieving iTunes library.'
             itunes = iTunes(pathXML).asDict()
-            self.writeJSON(pathJSONN, itunes)
+            self.writeJSON(pathJSON, itunes)
 
         itunes = self.readJSON(pathJSON)
         print 'Finished loading %s' % self.ITUNES_JSON
@@ -96,13 +98,16 @@ class MHTRTC(object):
 
     # Compare.
 
-    def compareCollection(self, collection, itunes):
-        #print '\n'.join(sorted(itunes.keys()))
-        for artist, albums1 in collection.items():
-            artist = self.compareArtists(artist, itunes.keys())
+    def compareCollection(self, collection1, collection2):
+        #print '\n'.join(sorted(collection2.keys()))
+        artists = sorted(collection1.keys())
+
+        for artist in artists:
+            albums1 = collection1[artist]
+            artist = self.compareArtists(artist, collection2.keys())
 
             if not artist is None:
-                albums2 = itunes[artist]
+                albums2 = collection2[artist]
                 #self.printCompare(artist, albums1, albums2)
                 self.compareAlbums(artist, albums1, albums2)
                 self.compareAlbums(artist, albums2, albums1)
