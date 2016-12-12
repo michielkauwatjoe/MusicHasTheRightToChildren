@@ -19,6 +19,7 @@ class MHTRTC(object):
     EXTENSIONS = [EXTENSION_MP3, EXTENSION_M4A]
     SDB_DOMAIN_NAME = 'musichastherighttochildren'
 
+    # Place where collection data is buffered for faster comparison.
     ITUNES_JSON = 'data/itunes.json'
     COLLECTION_JSON = 'data/collection.json'
     DISCOGS_JSON = 'data/discogs.json'
@@ -46,25 +47,37 @@ class MHTRTC(object):
             return d
 
     def getCollection(self, force=False):
+        u"""
+        Loads and buffers entire collection stored on network.
+        """
         if not os.path.exists(self.COLLECTION_JSON) or force:
             collection = Collection(self.settings.BACKUP, verbose=True).asDict()
             self.writeJSON(self.COLLECTION_JSON, collection)
         else:
             collection = self.readJSON(self.COLLECTION_JSON)
+
         print 'Finished loading %s' % self.COLLECTION_JSON
         return collection
 
     def getITunes(self, force=False):
+        u"""
+        Loads and buffers local iTunes collection.
+        """
         if not os.path.exists(self.ITUNES_JSON) or force:
             print 'Retrieving iTunes library.'
             itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
             self.writeJSON(self.ITUNES_JSON, itunes)
         else:
             itunes = self.readJSON(self.ITUNES_JSON)
+
         print 'Finished loading %s' % self.ITUNES_JSON
         return itunes
 
     def getDiscogs(self, force=False):
+        u"""
+        Loads and buffers Discogs collection.
+        TODO: finish.
+        """
         if not os.path.exists(self.DISCOGS_JSON) or force:
             print 'Retrieving Discogs collection.'
             discogs = Discogs().asDict()

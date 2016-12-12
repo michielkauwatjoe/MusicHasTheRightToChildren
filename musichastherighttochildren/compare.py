@@ -16,6 +16,7 @@ class Compare(MHTRTC):
 
     def __init__(self, verbose=False, log=True):
         u"""
+        Holds local iTunes collection to library on network.
         """
         super(Compare, self).__init__()
         self.verbose = verbose
