@@ -13,7 +13,8 @@ from retrieval.collection import Collection
 
 class MHTRTC(object):
     u"""
-    Base object.
+    Scans digital music collection and does various comparison and enhancement
+    operations on metadata.
     """
     EXTENSION_MP3 = 'mp3'
     EXTENSION_M4A = 'm4a'
@@ -31,8 +32,8 @@ class MHTRTC(object):
         """
         Shell.initColorama()
         self.settings = Settings()
-        itunesCollection = self.getITunes()
-        filesCollection = self.getCollection()
+        itunesCollection = self.getITunes(pathXML=self.settings.BACKUP_LIBRARY, pathJSON=self.ITUNES_JSON)
+        filesCollection = self.getCollection(pathFiles=self.settings.BACKUP, pathJSON=self.COLLECTION_JSON)
         self.compareCollection(filesCollection, itunesCollection)
 
     def writeJSON(self, path, data):
@@ -51,29 +52,30 @@ class MHTRTC(object):
             return d
 
     # Load.
-    def getCollection(self, force=False):
+    def getCollection(self, pathFiles=None, pathJSON=None, force=False):
         u"""
         Loads and buffers entire collection stored on network. Stores files
         in JSON format.
         """
-        if not os.path.exists(self.COLLECTION_JSON) or force:
-            collection = Collection(self.settings.BACKUP, verbose=True).asDict()
-            self.writeJSON(self.COLLECTION_JSON, collection)
+        if not os.path.exists(pathJSON) or force:
+            collection = Collection(pathFiles, verbose=True).asDict()
+            self.writeJSON(pathJSON, collection)
 
-        collection = self.readJSON(self.COLLECTION_JSON)
-        print 'Finished loading %s' % self.COLLECTION_JSON
+        # Reopen from file. NOTE: direct read gives Unicode errors.
+        collection = self.readJSON(pathJSON)
+        print 'Finished loading %s' % pathJSON
         return collection
 
-    def getITunes(self, force=False):
+    def getITunes(self, pathXML=None, pathJSON=None, force=False):
         u"""
         Loads and buffers local iTunes collection.
         """
-        if not os.path.exists(self.ITUNES_JSON) or force:
+        if not os.path.exists(pathJSON) or force:
             print 'Retrieving iTunes library.'
-            itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
-            self.writeJSON(self.ITUNES_JSON, itunes)
+            itunes = iTunes(pathXML).asDict()
+            self.writeJSON(pathJSONN, itunes)
 
-        itunes = self.readJSON(self.ITUNES_JSON)
+        itunes = self.readJSON(pathJSON)
         print 'Finished loading %s' % self.ITUNES_JSON
         return itunes
 
