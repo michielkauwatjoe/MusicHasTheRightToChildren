@@ -100,7 +100,7 @@ class iTunes(object):
             elif artist:
                 albumartist = artist
             else:
-                print 'Unknown artist for track ID %d' % tid
+                print 'Unknown artist for track ID %d, album %s' % (tid, track['Location'])
                 continue
 
 

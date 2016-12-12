@@ -48,14 +48,13 @@ class MHTRTC(object):
 
     def getCollection(self, force=False):
         u"""
-        Loads and buffers entire collection stored on network.
+        Loads and buffers entire collection stored on network. Stores files in JSON format.
         """
         if not os.path.exists(self.COLLECTION_JSON) or force:
             collection = Collection(self.settings.BACKUP, verbose=True).asDict()
             self.writeJSON(self.COLLECTION_JSON, collection)
-        else:
-            collection = self.readJSON(self.COLLECTION_JSON)
 
+        collection = self.readJSON(self.COLLECTION_JSON)
         print 'Finished loading %s' % self.COLLECTION_JSON
         return collection
 
@@ -67,9 +66,8 @@ class MHTRTC(object):
             print 'Retrieving iTunes library.'
             itunes = iTunes(self.settings.BACKUP_LIBRARY).asDict()
             self.writeJSON(self.ITUNES_JSON, itunes)
-        else:
-            itunes = self.readJSON(self.ITUNES_JSON)
 
+        itunes = self.readJSON(self.ITUNES_JSON)
         print 'Finished loading %s' % self.ITUNES_JSON
         return itunes
 

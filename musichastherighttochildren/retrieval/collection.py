@@ -20,17 +20,13 @@ class Collection(object):
         self.collection = {}
         self.load()
 
-        '''
-        # TODO: move outside object, compare two Albums objects, one for
-        # local, one for remote respectively.
-        if check:
-            self.checkBackedUp()
-        '''
-
         if verbose:
             self.printVerbose()
 
     def asDict(self):
+        u"""
+        Returns dictionary contents only.
+        """
         return self.collection
 
     def asPaths(self):
@@ -58,15 +54,20 @@ class Collection(object):
         total_count = 0
 
         for artist, albums, _ in os.walk(path):
+
+            # Feedback while scanning, could be a lot of folders.
             if count > max_count:
                 print 'Scanned %d folders' % total_count
                 total_count += max_count
                 count = 0
+
             if artist == self.root:
                 # Skips base folder.
                 continue
+
             if len(albums) > 0:
                 self.collection[self.stripArtist(artist)] = albums
+
             count += 1
 
     def stripArtist(self, artist):
@@ -75,28 +76,6 @@ class Collection(object):
     def load(self):
         self.walk(self.root)
 
-    '''
-    #if not os.path.exists(self.BACKUP):
-    #    print 'Backup path %s does not exist, you might need to mount the harddrive.' % self.BACKUP
-    #        return
-    # TODO: convert to compare.
-    def checkBackedUp(self):
-        for artist, albums in self.collection.items():
-            for album in albums:
-                path = self.backupPath(artist, album)
-                if not self.backedUp(path):
-                    print 'Please back up %s' % path
-
-    def backupPath(self, artist, album):
-        return self.BACKUP + artist + '/' + album
-
-    def backedUp(self, path):
-        if os.path.exists(path):
-            return True
-        return False
-    '''
-
 if __name__ == '__main__':
     settings = Settings()
     Collection(settings.COLLECTION, check=True, verbose=True)
-

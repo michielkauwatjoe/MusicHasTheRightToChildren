@@ -25,9 +25,11 @@ class Compare(MHTRTC):
         self.compareCollection(collection, itunes)
 
     def compareCollection(self, collection, itunes):
+        #print '\n'.join(sorted(itunes.keys()))
         for artist, albums1 in collection.items():
             artist = self.compareArtists(artist, itunes.keys())
 
+        '''
             if not artist is None:
                 albums2 = itunes[artist]
 
@@ -36,6 +38,7 @@ class Compare(MHTRTC):
 
                 self.compareAlbums(artist, albums1, albums2)
                 self.compareAlbums(artist, albums2, albums1)
+        '''
 
     def printCompare(self, artist, albums1, albums2):
         print sorted(albums1)
@@ -50,7 +53,6 @@ class Compare(MHTRTC):
         artist = artist.replace('_', '/')
         if artist in artists:
             return artist
-
 
         matches = difflib.get_close_matches(artist, artists, 3, 0.75)
 
