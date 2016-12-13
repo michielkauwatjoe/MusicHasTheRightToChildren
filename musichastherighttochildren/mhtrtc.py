@@ -108,9 +108,9 @@ class MHTRTC(object):
 
             if not artist is None:
                 albums2 = collection2[artist]
-                #self.printCompare(artist, albums1, albums2)
                 self.compareAlbums(artist, albums1, albums2)
-                self.compareAlbums(artist, albums2, albums1)
+                #self.compareAlbums(artist, albums2, albums1)
+                #self.printCompare(artist, albums1, albums2)
 
     def printCompare(self, artist, albums1, albums2):
         print sorted(albums1)
