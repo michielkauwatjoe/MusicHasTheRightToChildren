@@ -99,7 +99,10 @@ class MHTRTC(object):
     # Compare.
 
     def compareCollection(self, collection1, collection2):
-        #print '\n'.join(sorted(collection2.keys()))
+        u"""
+        Checks collection1 agains collection2 and reports missing artists and
+        albums.
+        """
         artists = sorted(collection1.keys())
 
         for artist in artists:
@@ -109,14 +112,14 @@ class MHTRTC(object):
             if not artist is None:
                 albums2 = collection2[artist]
                 self.compareAlbums(artist, albums1, albums2)
-                #self.compareAlbums(artist, albums2, albums1)
-                #self.printCompare(artist, albums1, albums2)
 
     def printCompare(self, artist, albums1, albums2):
+        u"""
+        """
         print sorted(albums1)
         print sorted(albums2.keys())
 
-    def compareArtists(self, artist, artists):
+    def compareArtists(self, artist, artists, soft=False):
         u"""
         """
         if artist in artists:
@@ -127,18 +130,16 @@ class MHTRTC(object):
         if artist in artists:
             return artist
 
-        matches = difflib.get_close_matches(artist, artists, 3, 0.75)
+        # Soft compare using difflib.
+        if soft is True:
+            matches = difflib.get_close_matches(artist, artists, 3, 0.75)
 
-        if len(matches) >= 1:
-            #d = difflib.Differ()
-            #diff = d.compare(artist, matches)
-            #print ''.join(diff)
-            match = (', '.join(matches))
-            #Shell.printArtist(u'Found match(es) for artist')
-            #Shell.printArtist(u' * %s' % artist)
-            #Shell.printArtist(u' * %s' % match)
-            artist = matches[0]
-            return artist
+            if len(matches) >= 1:
+                #d = difflib.Differ()
+                #diff = d.compare(artist, matches)
+                match = (', '.join(matches))
+                artist = matches[0]
+                return artist
 
         special_characters = [(u'é', 'e'), (u'ü', 'u')]
         escape_artist = ''
