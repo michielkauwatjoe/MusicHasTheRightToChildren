@@ -1,28 +1,39 @@
-path = '/Users/michiel/Downloads/test.wav'
-
 from scipy.io.wavfile import read
 
-samples = 500000
-w = width()
+def drawLine(p0, p1):
+    newPath()
+    moveTo(p0)
+    lineTo(p1)
+    closePath()
+    drawPath()
+
+path = '/Users/michiel/Downloads/test.wav'
+seconds = 10
+samplerate = 44100 # kHz, which is samples per second.
+# Don't show all samples to reduce drawing.
+# TODO: calculate mean.
+di = int(samplerate / 1000)
+leading = 14
+#print(type(di))
+#print(di)
+maxsamples = seconds * samplerate
+dx = 50
+w = width() - 2 * dx
 h = height()
 maxy = h / 2
 dy = h / 4
 # read audio samples
 input_data = read(path)
-#print(input_data)
 rawaudio = input_data[1]
+samples = len(rawaudio)
+print('Total number of samples: %d' % samples)
 
-l = len(rawaudio)
-print('Total number of samples: %d' % l)
-
-if samples < l:
-    audio = rawaudio[0:samples+1]
+if maxsamples < samples:
+    audio = rawaudio[0:maxsamples]
 else:
     print('Full length')
     audio= rawaudio[0:]
-    samples = l
-    
-
+    maxsamples = samples
 
 low = audio[:,0]
 high = audio[:,1]
@@ -31,19 +42,28 @@ highest = int(max(high))
 diff = highest - lowest
 yscale = maxy / diff
 meany = h / 2
-
-#print('%s %s' % (lowest,  highest))
-
-stroke(0.8, 0.8, 0)
-strokeWidth(1)
 interval = 0
+xscale = w / maxsamples * di
 
-di = 50 # Drop samples at higher zoom level.
-xscale = w / samples * di
+fill(0.5, 0.6, 0.2)
+rect(0, 0, width(), height())
+fill(1, 1, 1)
+rect(dx, dy, w, maxy)
 
-for x in range(0, l):
-    if interval > l:
+fill(0, 0.3, 0.1)
+
+offset = 40
+text(str(lowest), (dx - offset, dy))
+text(str(highest), (dx - offset, maxy + dy))
+stroke(1, 0, 0)
+strokeWidth(0.5)
+drawLine((dx, dy), (w+dx, dy))
+drawLine((dx, dy + maxy), (w+dx, dy + maxy))
+
+for x in range(0, maxsamples):
+    if interval > maxsamples:
         break
+        
     sample = audio[interval]
     y0 = (int(sample[0]) + abs(lowest)) * yscale + dy
 
@@ -55,11 +75,21 @@ for x in range(0, l):
     if y1 < meany:
         y1 = meany
         
-    #print('%s, %s' % (x, y0))
-    #print('%s, %s' % (x, y1))
-    newPath()
-    moveTo((x * xscale, y0))
-    lineTo((x * xscale, y1))
-    closePath()
-    drawPath()
+    x0 = (x * xscale) + dx
+    p0 = (x0, y0)
+    p1 = (x0, y1)
+    stroke(0.8, 0.8, 0)
+    strokeWidth(1)
+    drawLine(p0, p1)
     interval += di
+
+ws = w / seconds
+x = 0
+
+for i in range(0, seconds+1):
+    stroke(1, 0, 0)
+    strokeWidth(0.5)
+    drawLine((dx+x, dy), (dx+x, dy+maxy))
+    stroke(None)
+    text('%ds' % i, (dx+x, dy-leading))
+    x += ws
