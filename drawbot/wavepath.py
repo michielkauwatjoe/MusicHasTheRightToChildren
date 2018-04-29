@@ -1,3 +1,7 @@
+#
+# DrawBot script to visualize the contents of a WAV file.
+#
+
 from scipy.io.wavfile import read
 
 def drawLine(p0, p1):
@@ -102,10 +106,10 @@ right = []
 for x in range(0, maxsamples):
     if interval >= maxsamples:
         break
-        
+
     sample = audio[interval]
-    yLeft = (int(sample[1]) + abs(lowest)) * yscale + dyLeft        
-    yRight = (int(sample[0]) + abs(lowest)) * yscale + dyRight     
+    yLeft = (int(sample[1]) + abs(lowest)) * yscale + dyLeft
+    yRight = (int(sample[0]) + abs(lowest)) * yscale + dyRight
     x0 = (x * xscale) + dx
     pLeft = (x0, yLeft)
     pRight = (x0, yRight)
@@ -139,7 +143,7 @@ else:
     x = 0
     fill(1, 0, 0)
     strokeWidth(0.5)
-    
+
     for i in range(0, ds+1):
         stroke(None)
         ddx = dx + x
