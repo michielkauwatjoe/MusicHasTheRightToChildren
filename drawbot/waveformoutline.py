@@ -7,14 +7,30 @@ def drawLine(p0, p1):
     closePath()
     drawPath()
 
+def drawPeaks(coords):
+    newPath()
+    p0 = coords[0]
+    moveTo(p0)
+    for p1 in coords[1:]:
+        lineTo(p1)
+    #closePath()
+    drawPath()
+
+# Tweak these.
+
 path = '/Users/michiel/Downloads/test.wav'
-seconds = 10
+seconds = 0.5
 samplerate = 44100 # kHz or samples per second.
-# Don't show all samples to reduce drawing.
-# TODO: calculate mean.
-di = int(samplerate / 1000)
+
+if seconds > 1:
+    # Don't show all samples to reduce drawing.
+    di = int(samplerate / 1000)
+else:
+    di = 1
+
+#
 leading = 14
-maxsamples = seconds * samplerate
+maxsamples = int(seconds * samplerate)
 dx = 50
 w = width() - 2 * dx
 h = height()
@@ -43,12 +59,13 @@ meany = h / 2
 interval = 0
 xscale = w / maxsamples * di
 
-fill(0.5, 0.6, 0.2)
+fill(0.9, 0.9, 0.8)
 rect(0, 0, width(), height())
 fill(1, 1, 1)
 rect(dx, dy, w, maxy)
 
-fill(0, 0.3, 0.1)
+
+fill(1, 0, 0)
 
 offset = 40
 text(str(lowest), (dx - offset, dy))
@@ -58,43 +75,50 @@ strokeWidth(0.5)
 drawLine((dx, dy), (w+dx, dy))
 drawLine((dx, dy + maxy), (w+dx, dy + maxy))
 
-highs = []
-lows = []
+left = []
+right = []
 
 for x in range(0, maxsamples):
-    if interval > maxsamples:
+    if interval >= maxsamples:
         break
         
     sample = audio[interval]
-    y0 = (int(sample[0]) + abs(lowest)) * yscale + dy
-
-    if y0 > meany:
-        y0 = meany
-        
-    y1 = (int(sample[1]) + abs(lowest)) * yscale + dy
-    
-    if y1 < meany:
-        y1 = meany
-        
+    y0 = (int(sample[0]) + abs(lowest)) * yscale + dy        
+    y1 = (int(sample[1]) + abs(lowest)) * yscale + dy        
     x0 = (x * xscale) + dx
     p0 = (x0, y0)
     p1 = (x0, y1)
-    highs.append(p0)
-    lows.append(p1)
-    #stroke(0.8, 0.8, 0)
-    #strokeWidth(1)
-    #drawLine(p0, p1)
+    left.append(p0)
+    right.append(p1)
     interval += di
 
-ws = w / seconds
-x = 0
+strokeWidth(1)
+fill(None)
+stroke(0, 1, 0)
+drawPeaks(right)
+#stroke(0, 1, 0)
+#drawPeaks(left)
 
-print(highs)
 
-for i in range(0, seconds+1):
-    stroke(1, 0, 0)
+# Show seconds.
+
+if seconds > 1:
+    ws = w / seconds
+    x = 0
+    fill(1, 0, 0)
     strokeWidth(0.5)
-    drawLine((dx+x, dy), (dx+x, dy+maxy))
     stroke(None)
-    text('%ds' % i, (dx+x, dy-leading))
-    #x += ws
+    for i in range(0, seconds+1):
+        text('%ds' % i, (dx+x, dy-leading))
+        x += ws
+else:
+    ds = int(seconds*10)
+    wds = w / ds
+    x = 0
+    fill(1, 0, 0)
+    strokeWidth(0.5)
+    stroke(None)
+    
+    for i in range(0, ds+1):
+        text('0.%ds' % i, (dx+x, dy-leading))
+        x += wds
